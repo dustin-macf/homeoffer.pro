@@ -53,22 +53,64 @@ export default function DataDeletionPage() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">4. How to Request Data Deletion</h2>
               <p>To request deletion of your personal data, you can:</p>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">Option 1: Self-Service Account Deletion</h3>
+              <p>Follow these steps to delete your account immediately:</p>
+              <ol className="list-decimal pl-6 space-y-2">
+                <li>Log into your Home Offer account at homeoffer-pro.vercel.app</li>
+                <li>Click on your profile icon (top right)</li>
+                <li>Select "Account Settings" or "Profile"</li>
+                <li>Scroll to the bottom and click "Delete Account"</li>
+                <li>Review what will be deleted and what will be retained</li>
+                <li>Type "DELETE" to confirm</li>
+                <li>A verification email will be sent to your registered email address</li>
+                <li>Click the link in the email within 7 days to confirm deletion</li>
+                <li>Your account and personal data will be deleted within 30 days</li>
+              </ol>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">Option 2: Email Request</h3>
+              <p>Send an email to support@homeoffer.pro with:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li><strong>Self-Service:</strong> Log into your account and use the "Delete Account" option in your account settings</li>
-                <li><strong>Email:</strong> Send a written request to support@homeoffer.pro with the subject line "Data Deletion Request"</li>
-                <li><strong>Mail:</strong> Send a signed letter requesting data deletion (we will respond with verification instructions)</li>
+                <li><strong>Subject Line:</strong> "Data Deletion Request"</li>
+                <li><strong>Body Include:</strong> Your full name, email address, and phone number associated with your account</li>
+                <li><strong>Statement:</strong> "I request the deletion of my personal data and account from Home Offer"</li>
               </ul>
+              <p className="mt-4">We will respond within 5 business days with verification instructions and next steps.</p>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">Option 3: Phone Request</h3>
+              <p>Call our support team (during business hours) to request account deletion:</p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Have your account email and phone number ready</li>
+                <li>Speak with a support representative</li>
+                <li>We will send you a verification email within 24 hours</li>
+                <li>Confirm the deletion request via the verification link</li>
+              </ul>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">Option 4: Certified Mail Request</h3>
+              <p>Send a signed letter via certified mail to the address provided by support@homeoffer.pro requesting deletion of your personal data.</p>
             </section>
 
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Verification Process</h2>
-              <p>To prevent unauthorized deletion of accounts, we will verify your identity by:</p>
+              <p>To prevent unauthorized deletion of accounts, we require verification:</p>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">Step-by-Step Verification</h3>
+              <ol className="list-decimal pl-6 space-y-2">
+                <li><strong>Submit Request:</strong> Use any of the 4 methods above to request deletion</li>
+                <li><strong>Receive Email:</strong> Check your registered email for a verification message</li>
+                <li><strong>Click Verification Link:</strong> The email will contain a unique link valid for 7 days</li>
+                <li><strong>Confirm Identity:</strong> You may be asked to re-enter your password or answer security questions</li>
+                <li><strong>Final Confirmation:</strong> Review what will be deleted and click "Confirm Deletion"</li>
+                <li><strong>Processing:</strong> Your request will be processed within 30 days</li>
+              </ol>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">Important Notes</h3>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Confirming your email address and phone number match our records</li>
-                <li>Verifying your login credentials</li>
-                <li>Sending a confirmation link to your registered email (valid for 7 days)</li>
+                <li>Verification links expire after 7 days - request a new one if needed</li>
+                <li>You must have access to your registered email address</li>
+                <li>If you've deleted your email account, contact support@homeoffer.pro immediately</li>
+                <li>Deletion is permanent and cannot be undone</li>
               </ul>
-              <p className="mt-4">You must confirm the deletion request within 7 days. If not confirmed, the request will expire.</p>
             </section>
 
             <section>
@@ -112,17 +154,50 @@ export default function DataDeletionPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Contact Us</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Troubleshooting</h2>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">I didn't receive the verification email</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Check your spam/junk folder</li>
+                <li>Wait 5-10 minutes for the email to arrive</li>
+                <li>Request a new verification email (valid for 7 days)</li>
+                <li>Contact support@homeoffer.pro if the problem persists</li>
+              </ul>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">The verification link expired</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Submit a new deletion request</li>
+                <li>You will receive a new verification email with a new 7-day link</li>
+                <li>Click the new link to proceed with verification</li>
+              </ul>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">I forgot my password</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Use the "Forgot Password" link on the login page</li>
+                <li>Reset your password and log in</li>
+                <li>Then follow the self-service deletion steps</li>
+              </ul>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-3 mt-4">I can't access my email account</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Contact support@homeoffer.pro immediately</li>
+                <li>Provide your name and phone number associated with the account</li>
+                <li>We will assist you with the deletion process</li>
+              </ul>
+            </section>
+            
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">12. Contact Us</h2>
               <p>For questions about this Data Deletion Policy or to submit a deletion request:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>Email:</strong> support@homeoffer.pro</li>
                 <li><strong>Subject:</strong> Data Deletion Request</li>
                 <li><strong>Response Time:</strong> Within 5 business days</li>
+                <li><strong>Hours:</strong> Monday - Friday, 9 AM - 5 PM Pacific Time</li>
               </ul>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">12. Your Rights</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">13. Your Rights</h2>
               <p>Under data protection laws, you also have the right to:</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Request access to your personal data</li>

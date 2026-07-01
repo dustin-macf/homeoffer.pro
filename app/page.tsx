@@ -101,7 +101,7 @@ export default function Home() {
             The Transparent Real Estate Offer Marketplace
           </h2>
           <p className="text-lg sm:text-xl lg:text-2xl text-blue-100 mb-8 sm:mb-12">
-            Clear offering. Simple rules. Fair competition.
+            Simple. Transparent. Offers.
           </p>
 
           {/* One Big Get Started Button */}

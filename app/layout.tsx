@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Home Offer - Transparent Real Estate Bidding",
-  description: "The transparent real estate offer marketplace. Post properties, submit bids, and win homes through clear, fair competition.",
-  keywords: "real estate, bidding, auctions, home buying, listings, transparent",
+  title: "Home Offer - Transparent Real Estate Offer Marketplace",
+  description: "The transparent real estate offer marketplace. Post properties, submit offers, and win homes through clear, fair competition.",
+  keywords: "real estate, offers, auctions, home buying, listings, transparent",
   authors: [{ name: "Home Offer" }],
   viewport: "width=device-width, initial-scale=1, maximum-scale=5",
   robots: "index, follow",
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://homeoffer.pro",
     siteName: "Home Offer",
-    title: "Home Offer - Transparent Real Estate Bidding",
-    description: "The transparent real estate offer marketplace",
+    title: "Home Offer - Transparent Real Estate Offer Marketplace",
+    description: "The transparent real estate offer marketplace for buying and selling homes",
     images: [
       {
         url: "https://homeoffer.pro/og-image.png",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Home Offer - Transparent Real Estate Bidding",
-    description: "The transparent real estate offer marketplace",
+    title: "Home Offer - Transparent Real Estate Offer Marketplace",
+    description: "The transparent real estate offer marketplace for buying and selling homes",
   },
   appleWebApp: {
     capable: true,

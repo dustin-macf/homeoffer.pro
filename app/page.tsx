@@ -11,7 +11,7 @@ export default function Home() {
   const faqs = [
     {
       q: 'How does Home Offer work?',
-      a: 'Sellers post properties with a starting offer price. Buyers submit offers in $1,000 increments over a 12-day period. If offers come in during the final 15 minutes, the period auto-extends another 15 minutes. Highest offer wins.',
+      a: 'Sellers post properties with a starting offer price. Buyers submit offers in $1,000 increments over a 12-day period. If offers come in during the final 15 minutes, the period auto-extends another 15 minutes. Highest offer wins when the period closes.',
     },
     {
       q: 'Who can use Home Offer?',
@@ -33,6 +33,15 @@ export default function Home() {
       q: 'How do I get approved as a buyer?',
       a: 'Sign up, then the listing agent approves you via email/SMS before you can submit offers.',
     },
+  ]
+
+  const navigationItems = [
+    'How it works',
+    'Who can use it', 
+    'Offer increments',
+    'The 12-day period',
+    'Payments',
+    'Getting approved'
   ]
 
   const handleChatSubmit = (e: React.FormEvent) => {
@@ -92,7 +101,7 @@ export default function Home() {
             The Transparent Real Estate Offer Marketplace
           </h2>
           <p className="text-lg sm:text-xl lg:text-2xl text-blue-100 mb-8 sm:mb-12">
-            Clear bidding. Simple rules. Fair competition.
+            Clear offering. Simple rules. Fair competition.
           </p>
 
           {/* One Big Get Started Button */}
@@ -124,7 +133,7 @@ export default function Home() {
               </div>
               <div className="bg-white/10 rounded-lg p-4 sm:p-6">
                 <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">3️⃣</div>
-                <h4 className="font-bold text-base sm:text-lg mb-2">Bid</h4>
+                <h4 className="font-bold text-base sm:text-lg mb-2">Offer</h4>
                 <p className="text-sm sm:text-base text-blue-100">Buyers submit offers ($1,000 increments)</p>
               </div>
               <div className="bg-white/10 rounded-lg p-4 sm:p-6">
@@ -191,12 +200,9 @@ export default function Home() {
                 <div className="text-gray-500 text-xs sm:text-sm">
                   <p className="font-bold mb-2">👋 Ask me about:</p>
                   <ul className="text-xs space-y-1">
-                    <li>• How it works</li>
-                    <li>• Who can use it</li>
-                    <li>• Offer increments</li>
-                    <li>• The 12-day period</li>
-                    <li>• Payments</li>
-                    <li>• Getting approved</li>
+                    {navigationItems.map((item, i) => (
+                      <li key={i}>• {item}</li>
+                    ))}
                   </ul>
                 </div>
               )}
@@ -239,7 +245,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-white/10 py-6 sm:py-8 mt-12 sm:mt-16" role="contentinfo">
         <div className="max-w-6xl mx-auto px-4 text-center text-blue-100 text-sm sm:text-base">
-          <p className="mb-4">&copy; 2026 Home Offer. Transparent bidding for real estate.</p>
+          <p className="mb-4">&copy; 2026 Home Offer. Transparent offer marketplace for real estate.</p>
           <div className="flex justify-center items-center gap-2">
             <span className="text-xs">ADA Compliant</span>
             <span role="img" aria-label="Accessibility symbol">♿</span>

@@ -1,18 +1,23 @@
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
-  const requestUrl = new URL(request.url)
-  const code = requestUrl.searchParams.get('code')
+  const { searchParams } = new URL(request.url)
+  const code = searchParams.get('code')
+  const error = searchParams.get('error')
+  const error_description = searchParams.get('error_description')
 
-  if (code) {
-    const cookieStore = cookies()
-    const supabase = createRouteHandlerClient({ cookies: () => cookieStore })
-
-    await supabase.auth.exchangeCodeForSession(code)
+  // Handle errors
+  if (error) {
+    return NextResponse.redirect(
+      new URL(`/login?error=${error}&error_description=${error_description}`, request.url)
+    )
   }
 
-  // URL to redirect to after sign in process completes
-  return NextResponse.redirect(new URL('/select-role', request.url))
+  // If we have a code, Supabase will handle it - redirect to select-role
+  if (code) {
+    return NextResponse.redirect(new URL('/select-role', request.url))
+  }
+
+  // Fallback
+  return NextResponse.redirect(new URL('/login', request.url))
 }

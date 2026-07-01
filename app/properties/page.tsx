@@ -1,7 +1,5 @@
 'use client'
 
-export const dynamic = 'force-dynamic'
-
 import { useEffect, useState } from 'react'
 import { getActiveProperties, getPropertyWithOffers } from '@/lib/properties'
 import Link from 'next/link'

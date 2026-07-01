@@ -38,16 +38,27 @@ export async function signIn(email: string, password: string) {
   return data
 }
 
-export async function signInWithOAuth(provider: 'google' | 'github') {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider,
-    options: {
-      redirectTo: `${typeof window !== 'undefined' ? window.location.origin : ''}/auth/callback`,
-    },
-  })
+export async function signInWithOAuth(provider: 'google' | 'facebook') {
+  try {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: provider === 'facebook' ? 'facebook' : 'google',
+      options: {
+        redirectTo: `${typeof window !== 'undefined' ? window.location.origin : ''}/auth/callback`,
+        skipBrowserRedirect: false,
+      },
+    })
 
-  if (error) throw error
-  return data
+    if (error) {
+      console.error(`OAuth error (${provider}):`, error)
+      throw error
+    }
+
+    // Supabase handles the redirect automatically
+    return data
+  } catch (err: any) {
+    console.error(`Sign in with ${provider} failed:`, err)
+    throw err
+  }
 }
 
 export async function signOut() {

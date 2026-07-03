@@ -23,29 +23,54 @@ export async function GET(request: NextRequest) {
 
   const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-  // If we have a code, try to exchange it (email confirmation case)
+  // If we have a code, try to exchange it
   if (code) {
     try {
       const { data, error: exchangeError } = await supabase.auth.exchangeCodeForSession(code)
       
       if (exchangeError) {
-        console.warn('Exchange error (continuing anyway):', exchangeError)
-        // Don't fail - Supabase might have already authenticated the user
+        console.warn('Exchange error:', exchangeError)
+        return NextResponse.redirect(new URL('/login?error=exchange_failed', request.url))
       }
 
-      // Redirect to role selection regardless of exchange result
-      // If user is authenticated, they'll see the role selection form
-      // If not, login will redirect them back to /login
+      // User is now authenticated - create profile if it doesn't exist
+      if (data.user) {
+        const { data: existingUser } = await supabase
+          .from('users')
+          .select('id')
+          .eq('id', data.user.id)
+          .single()
+
+        if (!existingUser) {
+          // Create new user profile from OAuth data
+          const [firstName, ...lastNameParts] = (data.user.user_metadata?.name || data.user.email || '').split(' ')
+          
+          const { error: insertError } = await supabase
+            .from('users')
+            .insert({
+              id: data.user.id,
+              email: data.user.email,
+              first_name: firstName || 'User',
+              last_name: lastNameParts.join(' ') || '',
+              user_type: null, // Will be set on /select-role
+              sms_opt_in: false,
+            })
+
+          if (insertError) {
+            console.warn('Profile creation error:', insertError)
+            // Don't fail - user is authenticated, just might not have full profile
+          }
+        }
+      }
+
+      // Redirect to role selection
       return NextResponse.redirect(new URL('/select-role', request.url))
     } catch (err: any) {
-      console.warn('Callback error (continuing anyway):', err)
-      // Still redirect to /select-role - user might be authenticated
-      return NextResponse.redirect(new URL('/select-role', request.url))
+      console.warn('Callback error:', err)
+      return NextResponse.redirect(new URL('/login?error=callback_error', request.url))
     }
   }
 
-  // No code = OAuth callback from Supabase (Google, Meta)
-  // Supabase already authenticated the user and set cookies
-  // Redirect to role selection
+  // No code = OAuth callback from Supabase (user already authenticated)
   return NextResponse.redirect(new URL('/select-role', request.url))
 }

@@ -28,6 +28,19 @@ export default function SelectRolePage() {
       router.push('/login')
       return
     }
+    
+    // If user already has a role, send them to their dashboard
+    if (currentUser.user_type) {
+      if (currentUser.user_type === 'buyer') {
+        router.push('/buyer')
+      } else if (currentUser.user_type === 'seller') {
+        router.push('/seller')
+      } else if (currentUser.user_type === 'agent') {
+        router.push('/agent/profile')
+      }
+      return
+    }
+    
     setUser(currentUser)
     setLoading(false)
   }

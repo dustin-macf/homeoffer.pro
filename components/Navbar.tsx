@@ -83,7 +83,10 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-2 font-bold text-xl text-indigo-600">
+            <Link 
+              href={user ? (user.user_type === 'buyer' ? '/buyer' : user.user_type === 'seller' ? '/seller' : '/agent/dashboard') : '/'} 
+              className="flex items-center gap-2 font-bold text-xl text-indigo-600"
+            >
               <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">
                 🏠
               </div>

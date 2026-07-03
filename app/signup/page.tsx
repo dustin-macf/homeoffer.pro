@@ -14,6 +14,8 @@ export default function SignupPage() {
     first_name: '',
     last_name: '',
   })
+  const [smsOptIn, setSmsOptIn] = useState(false)
+  const [termsAccepted, setTermsAccepted] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -35,6 +37,7 @@ export default function SignupPage() {
         first_name: formData.first_name,
         last_name: formData.last_name,
         user_type: 'buyer',
+        sms_opt_in: smsOptIn,
       })
 
       router.push('/select-role')
@@ -200,9 +203,50 @@ export default function SignupPage() {
             />
           </div>
 
+          {/* SMS Opt-In Checkbox */}
+          <div className="flex items-start gap-3 bg-blue-50 p-3 rounded-lg">
+            <input
+              type="checkbox"
+              id="sms-optin"
+              checked={smsOptIn}
+              onChange={(e) => setSmsOptIn(e.target.checked)}
+              className="mt-1 w-4 h-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+            />
+            <label htmlFor="sms-optin" className="text-xs text-gray-700 cursor-pointer">
+              I agree to receive SMS text message notifications about offers, approvals, and marketplace updates. Standard message rates apply. I can opt-out anytime by replying STOP. See our{' '}
+              <Link href="/sms-policy" className="text-indigo-600 hover:underline font-semibold">
+                SMS Policy
+              </Link>
+              .
+            </label>
+          </div>
+
+          {/* Terms & Privacy Checkbox */}
+          <div className="flex items-start gap-3">
+            <input
+              type="checkbox"
+              id="terms"
+              checked={termsAccepted}
+              onChange={(e) => setTermsAccepted(e.target.checked)}
+              className="mt-1 w-4 h-4 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+              required
+            />
+            <label htmlFor="terms" className="text-xs text-gray-700 cursor-pointer">
+              I agree to the{' '}
+              <Link href="/terms" className="text-indigo-600 hover:underline font-semibold">
+                Terms of Service
+              </Link>
+              {' '}and{' '}
+              <Link href="/privacy" className="text-indigo-600 hover:underline font-semibold">
+                Privacy Policy
+              </Link>
+              .
+            </label>
+          </div>
+
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || !termsAccepted}
             className="w-full bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50 min-h-12 text-base"
             aria-busy={loading}
           >
@@ -217,7 +261,8 @@ export default function SignupPage() {
           </Link>
         </p>
 
-        <div className="mt-6 pt-6 border-t text-center text-xs text-gray-500">
+        <div className="mt-6 pt-6 border-t text-center text-xs text-gray-500 space-y-2">
+          <p>By creating an account, you agree to our policies.</p>
           <p>ADA Compliant ♿</p>
         </div>
       </div>

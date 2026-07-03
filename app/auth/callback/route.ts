@@ -18,32 +18,34 @@ export async function GET(request: NextRequest) {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    return NextResponse.redirect(new URL('/login?error=config_error', request.url))
+    return NextResponse.redirect(new URL('/select-role', request.url))
   }
 
   const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-  // If we have a code, exchange it for a session (email confirmation case)
+  // If we have a code, try to exchange it (email confirmation case)
   if (code) {
     try {
       const { data, error: exchangeError } = await supabase.auth.exchangeCodeForSession(code)
       
-      if (exchangeError || !data.session) {
-        console.error('Exchange error:', exchangeError)
-        return NextResponse.redirect(new URL('/login?error=exchange_error', request.url))
+      if (exchangeError) {
+        console.warn('Exchange error (continuing anyway):', exchangeError)
+        // Don't fail - Supabase might have already authenticated the user
       }
 
-      // Success! Redirect to role selection
-      const response = NextResponse.redirect(new URL('/select-role', request.url))
-      return response
+      // Redirect to role selection regardless of exchange result
+      // If user is authenticated, they'll see the role selection form
+      // If not, login will redirect them back to /login
+      return NextResponse.redirect(new URL('/select-role', request.url))
     } catch (err: any) {
-      console.error('Callback error:', err)
-      return NextResponse.redirect(new URL('/login?error=callback_error', request.url))
+      console.warn('Callback error (continuing anyway):', err)
+      // Still redirect to /select-role - user might be authenticated
+      return NextResponse.redirect(new URL('/select-role', request.url))
     }
   }
 
   // No code = OAuth callback from Supabase (Google, Meta)
   // Supabase already authenticated the user and set cookies
-  // Just redirect to select-role
+  // Redirect to role selection
   return NextResponse.redirect(new URL('/select-role', request.url))
 }

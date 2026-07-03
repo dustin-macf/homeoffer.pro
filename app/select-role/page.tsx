@@ -5,6 +5,7 @@ import { getCurrentUser } from '@/lib/auth'
 import { supabase } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 
 export default function SelectRolePage() {
   const router = useRouter()
@@ -42,9 +43,8 @@ export default function SelectRolePage() {
         .from('users')
         .select('id, first_name, last_name, email, phone_number')
         .eq('user_type', 'agent')
-        .or(
-          `first_name.ilike.%${query}%,last_name.ilike.%${query}%,email.ilike.%${query}%`
-        )
+        .eq('dre_verified', true)
+        .or(`first_name.ilike.%${query}%,last_name.ilike.%${query}%`)
         .limit(10)
 
       setAgentResults(agents || [])
@@ -88,8 +88,10 @@ export default function SelectRolePage() {
       // Redirect to appropriate dashboard
       if (selectedRole === 'buyer') {
         router.push('/buyer')
-      } else if (selectedRole === 'seller' || selectedRole === 'agent') {
+      } else if (selectedRole === 'seller') {
         router.push('/seller')
+      } else if (selectedRole === 'agent') {
+        router.push('/agent/profile')
       }
     } catch (err: any) {
       alert('Error: ' + err.message)
@@ -99,178 +101,147 @@ export default function SelectRolePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-600">Loading...</p>
-      </div>
+      <>
+        <Navbar />
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Header */}
-      <div className="bg-white shadow">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <div className="flex items-center gap-2">
-            <Link href="/" className="text-gray-600 hover:text-gray-900">
-              ← Home
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        {!role ? (
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Welcome, {user?.first_name}!</h1>
-            <p className="text-xl text-gray-600">How would you like to use Home Offer?</p>
-          </div>
-        ) : !showAgentSearch ? (
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Almost there!</h1>
-            <p className="text-xl text-gray-600">Complete your profile</p>
-          </div>
-        ) : (
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Do you have a buyer's agent?</h1>
-            <p className="text-xl text-gray-600">Link your agent to collaborate on offers</p>
-          </div>
-        )}
-
-        {/* Role Selection */}
-        {!role ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Buyer */}
-            <button
-              onClick={() => handleSelectRole('buyer')}
-              className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition text-left group"
-            >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition">🏠</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">I'm a Buyer</h2>
-              <p className="text-gray-600 mb-4">
-                Browse properties and submit competitive offers
-              </p>
-              <ul className="space-y-2 text-sm text-gray-600 mb-6">
-                <li>✓ Submit offers</li>
-                <li>✓ Track your offers</li>
-                <li>✓ Get notifications</li>
-              </ul>
-              <div className="text-indigo-600 font-semibold group-hover:translate-x-2 transition">
-                Get Started →
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-12">
+        <div className="max-w-4xl mx-auto px-4">
+          {!role ? (
+            <>
+              {/* Role Selection */}
+              <div className="text-center mb-12">
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">Welcome, {user?.first_name}!</h1>
+                <p className="text-xl text-gray-600">How would you like to use Home Offer?</p>
               </div>
-            </button>
 
-            {/* Seller/Agent */}
-            <button
-              onClick={() => handleSelectRole('agent')}
-              className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition text-left group"
-            >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition">🏢</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">I'm a Listing Agent</h2>
-              <p className="text-gray-600 mb-4">
-                List properties and manage buyer offers
-              </p>
-              <ul className="space-y-2 text-sm text-gray-600 mb-6">
-                <li>✓ List properties</li>
-                <li>✓ Manage offers</li>
-                <li>✓ Contact buyers</li>
-              </ul>
-              <div className="text-indigo-600 font-semibold group-hover:translate-x-2 transition">
-                Get Started →
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Buyer Card */}
+                <button
+                  onClick={() => handleSelectRole('buyer')}
+                  className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl hover:scale-105 transition text-left group"
+                >
+                  <div className="text-6xl mb-4">🏠</div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-3">I'm a Buyer</h2>
+                  <ul className="text-gray-600 space-y-2 text-sm">
+                    <li>✓ Browse properties</li>
+                    <li>✓ Submit offers</li>
+                    <li>✓ Track your activity</li>
+                    <li>✓ Coordinate with agents</li>
+                  </ul>
+                </button>
+
+                {/* Seller Card */}
+                <button
+                  onClick={() => handleSelectRole('seller')}
+                  className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl hover:scale-105 transition text-left group"
+                >
+                  <div className="text-6xl mb-4">📋</div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-3">I'm a Seller</h2>
+                  <ul className="text-gray-600 space-y-2 text-sm">
+                    <li>✓ Create listings</li>
+                    <li>✓ Receive offers</li>
+                    <li>✓ Send counter-offers</li>
+                    <li>✓ Manage negotiations</li>
+                  </ul>
+                </button>
+
+                {/* Agent Card */}
+                <button
+                  onClick={() => handleSelectRole('agent')}
+                  className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl hover:scale-105 transition text-left group"
+                >
+                  <div className="text-6xl mb-4">🤝</div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-3">I'm a Real Estate Agent</h2>
+                  <ul className="text-gray-600 space-y-2 text-sm">
+                    <li>✓ Add DRE license</li>
+                    <li>✓ Manage buyer clients</li>
+                    <li>✓ Track deals</li>
+                    <li>✓ Close transactions faster</li>
+                  </ul>
+                </button>
               </div>
-            </button>
-
-            {/* Buyer's Agent */}
-            <button
-              onClick={() => {
-                setRole('agent')
-                setShowAgentSearch(false)
-                handleSelectRole('agent')
-              }}
-              className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition text-left group"
-            >
-              <div className="text-5xl mb-4 group-hover:scale-110 transition">👥</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">I'm a Buyer's Agent</h2>
-              <p className="text-gray-600 mb-4">
-                Represent buyers and manage multiple offers
-              </p>
-              <ul className="space-y-2 text-sm text-gray-600 mb-6">
-                <li>✓ Manage clients</li>
-                <li>✓ Track offers</li>
-                <li>✓ Coordinate offers</li>
-              </ul>
-              <div className="text-indigo-600 font-semibold group-hover:translate-x-2 transition">
-                Get Started →
+            </>
+          ) : showAgentSearch && !selectedAgent ? (
+            <>
+              {/* Agent Search */}
+              <div className="text-center mb-12">
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">Do you have a buyer's agent?</h1>
+                <p className="text-xl text-gray-600 mb-2">Link your agent to collaborate on offers</p>
+                <p className="text-sm text-gray-500">(optional - you can find one later)</p>
               </div>
-            </button>
-          </div>
-        ) : showAgentSearch ? (
-          <div className="max-w-2xl mx-auto">
-            {/* Search for Agent */}
-            <div className="bg-white rounded-lg shadow-lg p-8 mb-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Find Your Agent</h3>
 
-              <input
-                type="text"
-                value={agentSearch}
-                onChange={(e) => {
-                  setAgentSearch(e.target.value)
-                  searchAgents(e.target.value)
-                }}
-                placeholder="Search by name or email..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4"
-              />
+              <div className="bg-white rounded-xl shadow-lg p-8 max-w-2xl mx-auto">
+                {/* Search Input */}
+                <input
+                  type="text"
+                  value={agentSearch}
+                  onChange={(e) => {
+                    setAgentSearch(e.target.value)
+                    searchAgents(e.target.value)
+                  }}
+                  placeholder="Search agent by name..."
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-6"
+                />
 
-              {/* Agent Results */}
-              {agentSearch && (
-                <div className="space-y-2 mb-6">
-                  {agentResults.length > 0 ? (
-                    agentResults.map((agent) => (
+                {/* Agent Results */}
+                {agentSearch && agentResults.length > 0 ? (
+                  <div className="space-y-3 mb-6">
+                    {agentResults.map((agent) => (
                       <button
                         key={agent.id}
                         onClick={() => handleSelectAgent(agent)}
-                        disabled={saving}
-                        className="w-full text-left p-4 border border-gray-300 rounded-lg hover:border-indigo-600 hover:bg-indigo-50 transition disabled:opacity-50"
+                        className="w-full p-4 border border-gray-200 rounded-lg hover:bg-indigo-50 hover:border-indigo-500 transition text-left"
                       >
                         <p className="font-bold text-gray-900">
                           {agent.first_name} {agent.last_name}
                         </p>
                         <p className="text-sm text-gray-600">{agent.email}</p>
-                        {agent.phone_number && (
-                          <p className="text-sm text-gray-600">{agent.phone_number}</p>
-                        )}
                       </button>
-                    ))
-                  ) : (
-                    <p className="text-gray-600 text-center py-4">No agents found</p>
-                  )}
+                    ))}
+                  </div>
+                ) : agentSearch && agentResults.length === 0 ? (
+                  <p className="text-center text-gray-500 mb-6">No agents found</p>
+                ) : null}
+
+                {/* Skip Button */}
+                <div className="pt-6 border-t border-gray-200">
+                  <button
+                    onClick={handleSkipAgent}
+                    disabled={saving}
+                    className="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold transition disabled:opacity-50"
+                  >
+                    {saving ? 'Setting up...' : 'Continue Without an Agent'}
+                  </button>
                 </div>
-              )}
+              </div>
 
-              {/* Skip Option */}
-              <button
-                onClick={handleSkipAgent}
-                disabled={saving}
-                className="w-full text-center text-indigo-600 hover:underline font-semibold disabled:opacity-50"
-              >
-                Skip for now →
-              </button>
-            </div>
-
-            {/* Back Button */}
-            <button
-              onClick={() => {
-                setRole(null)
-                setShowAgentSearch(false)
-                setAgentSearch('')
-                setAgentResults([])
-              }}
-              className="w-full text-center text-gray-600 hover:text-gray-900 font-semibold"
-            >
-              ← Back to role selection
-            </button>
-          </div>
-        ) : null}
+              {/* Go Back */}
+              <div className="text-center mt-8">
+                <button
+                  onClick={() => {
+                    setRole(null)
+                    setShowAgentSearch(false)
+                    setAgentSearch('')
+                    setAgentResults([])
+                  }}
+                  className="text-indigo-600 hover:text-indigo-700 font-semibold"
+                >
+                  ← Back
+                </button>
+              </div>
+            </>
+          ) : null}
+        </div>
       </div>
-    </div>
+    </>
   )
 }

@@ -151,7 +151,7 @@ export default function SelectRolePage() {
               </p>
               <ul className="space-y-2 text-sm text-gray-600 mb-6">
                 <li>✓ Submit offers</li>
-                <li>✓ Track your bids</li>
+                <li>✓ Track your offers</li>
                 <li>✓ Get notifications</li>
               </ul>
               <div className="text-indigo-600 font-semibold group-hover:translate-x-2 transition">
@@ -196,7 +196,7 @@ export default function SelectRolePage() {
               <ul className="space-y-2 text-sm text-gray-600 mb-6">
                 <li>✓ Manage clients</li>
                 <li>✓ Track offers</li>
-                <li>✓ Coordinate bids</li>
+                <li>✓ Coordinate offers</li>
               </ul>
               <div className="text-indigo-600 font-semibold group-hover:translate-x-2 transition">
                 Get Started →

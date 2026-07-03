@@ -11,7 +11,7 @@ export default function ActivityPage() {
   const [activities, setActivities] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<any>(null)
-  const [filter, setFilter] = useState<'all' | 'offers' | 'approvals' | 'bids'>('all')
+  const [filter, setFilter] = useState<'all' | 'offers' | 'approvals'>('all')
 
   useEffect(() => {
     loadActivity()

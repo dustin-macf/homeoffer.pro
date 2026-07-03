@@ -87,7 +87,7 @@ export default function TermsPage() {
             <li>Offers are binding upon submission</li>
             <li>Offers must meet minimum specified amounts</li>
             <li>Sellers may accept, reject, or counter any offer</li>
-            <li>Bidding period: 12 days with 15-minute auto-extend functionality</li>
+            <li>offering period: 12 days with 15-minute auto-extend functionality</li>
             <li>All transactions remain subject to applicable real estate laws</li>
           </ul>
         </section>

@@ -196,7 +196,7 @@ export default function BuyerClientProfilePage() {
                   <span className="font-bold text-gray-900">{offers.length}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Active Bids</span>
+                  <span className="text-gray-600">Active Offers</span>
                   <span className="font-bold text-green-600">
                     {offers.filter((o) => o.isActive).length}
                   </span>
@@ -208,7 +208,7 @@ export default function BuyerClientProfilePage() {
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Total Bid Value</span>
+                  <span className="text-gray-600">Total offer Value</span>
                   <span className="font-bold text-purple-600">
                     ${offers.reduce((sum, o) => sum + o.amount, 0).toLocaleString()}
                   </span>

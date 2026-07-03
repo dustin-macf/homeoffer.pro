@@ -217,7 +217,7 @@ export default function DataDeletionPage() {
                   <li>Account information (name, email, password)</li>
                   <li>Phone number and SMS preferences</li>
                   <li>Profile data and settings</li>
-                  <li>Offer submissions and bids</li>
+                  <li>Offer submissions</li>
                   <li>Device and usage data</li>
                 </ul>
               </section>

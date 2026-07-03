@@ -61,7 +61,7 @@ export default function SMSCompliancePage() {
             <div className="bg-gray-50 p-4 rounded-lg">
               <p className="text-gray-900 font-semibold mb-2">Message Type 2: Buyer Approval Confirmation</p>
               <div className="bg-white p-3 rounded border border-gray-200 font-mono text-sm text-gray-800">
-                <p>Your access approved! You can now submit offers on 456 Downtown Plaza. Start bidding: https://homeoffer-pro.vercel.app/properties</p>
+                <p>Your access approved! You can now submit offers on 456 Downtown Plaza. Start offering: https://homeoffer-pro.vercel.app/properties</p>
                 <p className="mt-2 text-xs text-gray-600">Reply STOP to opt-out. Privacy: https://homeoffer-pro.vercel.app/privacy</p>
               </div>
             </div>

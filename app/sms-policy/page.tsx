@@ -53,8 +53,8 @@ export default function SMSPolicyPage() {
             SMS frequency depends on your marketplace activity:
           </p>
           <ul className="list-disc pl-6 space-y-1 text-gray-700">
-            <li><strong>During active bidding:</strong> 0-5 messages per day (offer alerts, approvals, updates)</li>
-            <li><strong>After bidding ends:</strong> 1-2 messages per day (status updates, results)</li>
+            <li><strong>During active offering:</strong> 0-5 messages per day (offer alerts, approvals, updates)</li>
+            <li><strong>After offering ends:</strong> 1-2 messages per day (status updates, results)</li>
             <li><strong>During inactive periods:</strong> 0 messages (no activity = no notifications)</li>
           </ul>
           <p className="text-gray-700 mt-3">

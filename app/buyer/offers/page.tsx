@@ -212,7 +212,7 @@ export default function BuyerOffersPage() {
                         Status
                       </p>
                       <p className="text-sm font-semibold text-gray-900">
-                        {offer.isActive ? 'Bidding' : 'Closed'}
+                        {offer.isActive ? 'offering' : 'Closed'}
                       </p>
                     </div>
                   </div>
@@ -220,7 +220,7 @@ export default function BuyerOffersPage() {
                   {/* SMS Placeholder */}
                   {offer.isActive && (
                     <div className="bg-blue-100 border border-blue-300 rounded p-3 mb-4 text-sm text-blue-800">
-                      📱 <strong>SMS:</strong> You'll receive notifications when your offer is approved or outbid
+                      📱 <strong>SMS:</strong> You'll receive notifications when your offer is approved or outoffer
                     </div>
                   )}
 

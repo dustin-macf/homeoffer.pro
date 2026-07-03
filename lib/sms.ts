@@ -8,7 +8,7 @@
 export interface SMSNotification {
   to: string
   message: string
-  type: 'approval-request' | 'approval-confirmation' | 'new-offer' | 'outbid' | 'offer-won' | 'offer-closed'
+  type: 'approval-request' | 'approval-confirmation' | 'new-offer' | 'outoffer' | 'offer-won' | 'offer-closed'
 }
 
 /**
@@ -85,7 +85,7 @@ export async function notifyAgentNewOffer(
   offerAmount: number,
   propertyLink: string
 ) {
-  const message = `New offer alert! ${buyerName} bid $${offerAmount.toLocaleString()} on ${propertyAddress}. Review at: ${propertyLink} Reply STOP to opt-out.`
+  const message = `New offer alert! ${buyerName} offer $${offerAmount.toLocaleString()} on ${propertyAddress}. Review at: ${propertyLink} Reply STOP to opt-out.`
 
   return await sendAgentSMS(agentPhone, message, 'new-offer')
 }
@@ -98,23 +98,23 @@ export async function notifyBuyerApproved(
   propertyAddress: string,
   propertyLink: string
 ) {
-  const message = `Approved! Your access is confirmed for ${propertyAddress}. Start bidding: ${propertyLink} Reply STOP to opt-out.`
+  const message = `Approved! Your access is confirmed for ${propertyAddress}. Start offering: ${propertyLink} Reply STOP to opt-out.`
 
   return await sendBuyerSMS(buyerPhone, message, 'approval-confirmation')
 }
 
 /**
- * Buyer outbid - notify buyer
+ * Buyer outoffer - notify buyer
  */
-export async function notifyBuyerOutbid(
+export async function notifyBuyerOutoffer(
   buyerPhone: string,
   propertyAddress: string,
   newHighestOffer: number,
   propertyLink: string
 ) {
-  const message = `You've been outbid on ${propertyAddress}! New highest: $${newHighestOffer.toLocaleString()}. Counter-bid: ${propertyLink} Reply STOP to opt-out.`
+  const message = `You've been outoffer on ${propertyAddress}! New highest: $${newHighestOffer.toLocaleString()}. Counter-offer: ${propertyLink} Reply STOP to opt-out.`
 
-  return await sendBuyerSMS(buyerPhone, message, 'outbid')
+  return await sendBuyerSMS(buyerPhone, message, 'outoffer')
 }
 
 /**
@@ -132,14 +132,14 @@ export async function notifyBuyerOfferWon(
 }
 
 /**
- * Bidding closed - notify buyer
+ * offering closed - notify buyer
  */
-export async function notifyBuyerBiddingClosed(
+export async function notifyBuyerOfferingClosed(
   buyerPhone: string,
   propertyAddress: string,
   finalOffer: number
 ) {
-  const message = `Bidding closed on ${propertyAddress}. Your final offer: $${finalOffer.toLocaleString()}. Reply STOP to opt-out.`
+  const message = `offering closed on ${propertyAddress}. Your final offer: $${finalOffer.toLocaleString()}. Reply STOP to opt-out.`
 
   return await sendBuyerSMS(buyerPhone, message, 'offer-closed')
 }

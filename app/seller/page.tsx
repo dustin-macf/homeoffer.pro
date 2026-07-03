@@ -279,7 +279,7 @@ export default function SellerDashboard() {
                         </h3>
                         <p className="text-gray-600">{approval.users?.email}</p>
                         <p className="text-sm text-gray-500 mt-2">
-                          Wants to bid on:{' '}
+                          Wants to offer on:{' '}
                           <span className="font-semibold text-gray-900">
                             {approval.properties?.address}, {approval.properties?.city}{' '}
                             {approval.properties?.state}

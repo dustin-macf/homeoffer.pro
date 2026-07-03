@@ -210,12 +210,12 @@ export default function BuyerDashboard() {
             <li>Browse properties and find one you like</li>
             <li>Request approval from the listing agent</li>
             <li>Once approved, submit your offer in $1,000 increments</li>
-            <li>If you're outbid, you'll get an SMS notification</li>
-            <li>Keep bidding until the 12-day period ends</li>
+            <li>If you're outoffer, you'll get an SMS notification</li>
+            <li>Keep offering until the 12-day period ends</li>
             <li>Winner is announced automatically</li>
           </ol>
           <p className="text-sm text-blue-700 mt-4">
-            📖 <strong>Pro Tip:</strong> Enable SMS notifications to get real-time updates when you're outbid!
+            📖 <strong>Pro Tip:</strong> Enable SMS notifications to get real-time updates when you're outoffer!
           </p>
         </div>
       </div>

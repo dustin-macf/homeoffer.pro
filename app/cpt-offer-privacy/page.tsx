@@ -27,7 +27,7 @@ export default function CPTOfferPrivacyPage() {
           <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
             <li><strong>Account Registration:</strong> Name, email address, phone number, password, role (buyer/seller/agent)</li>
             <li><strong>Profile Information:</strong> Company name, business address, professional credentials</li>
-            <li><strong>Transaction Data:</strong> Offers submitted, property interests, bid amounts, approval status</li>
+            <li><strong>Transaction Data:</strong> Offers submitted, property interests, offer amounts, approval status</li>
             <li><strong>Communication:</strong> Messages, inquiries, support requests</li>
           </ul>
 

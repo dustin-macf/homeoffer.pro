@@ -240,7 +240,7 @@ export default function PropertySearchPage() {
                         ⏱️ {Math.ceil((endDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))}d left
                       </div>
                     ) : (
-                      <div className="text-xs text-gray-500 text-center">Bidding closed</div>
+                      <div className="text-xs text-gray-500 text-center">offering closed</div>
                     )}
                   </div>
                 </Link>

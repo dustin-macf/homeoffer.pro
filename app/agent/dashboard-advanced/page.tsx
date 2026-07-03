@@ -114,7 +114,7 @@ export default function BuyerAgentAdvancedDashboard() {
         return endDate > now && o.properties.status === 'active'
       })
 
-      // Detect conflicts (multiple clients bidding on same property)
+      // Detect conflicts (multiple clients offering on same property)
       const propertyMap = new Map<string, any[]>()
       buyerAgentOffers.forEach((offer) => {
         const propId = offer.properties.id
@@ -164,7 +164,7 @@ export default function BuyerAgentAdvancedDashboard() {
     ).values()
   )
 
-  // Detect properties with multiple of your clients bidding
+  // Detect properties with multiple of your clients offering
   const propertyConflicts = properties
     .map((prop) => {
       const propOffers = allOffers.filter(
@@ -257,7 +257,7 @@ export default function BuyerAgentAdvancedDashboard() {
               <p className="text-3xl font-bold text-blue-600">{stats.totalOffers}</p>
             </div>
             <div className="bg-green-50 rounded-lg p-4">
-              <p className="text-gray-600 text-sm font-semibold mb-1">Active Bids</p>
+              <p className="text-gray-600 text-sm font-semibold mb-1">Active Offers</p>
               <p className="text-3xl font-bold text-green-600">{stats.activeOffers}</p>
             </div>
             <div className={`rounded-lg p-4 ${stats.conflictCount > 0 ? 'bg-red-50' : 'bg-gray-50'}`}>
@@ -315,7 +315,7 @@ export default function BuyerAgentAdvancedDashboard() {
                         <p className="font-bold text-gray-900">{client.propertiesCount}</p>
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600">Total Bid</p>
+                        <p className="text-xs text-gray-600">Total offer</p>
                         <p className="font-bold text-gray-900">
                           ${(client.totalBid / 1000).toFixed(0)}K
                         </p>
@@ -342,10 +342,10 @@ export default function BuyerAgentAdvancedDashboard() {
             {propertyConflicts.length > 0 && (
               <div className="mb-8 bg-red-50 border-2 border-red-200 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-red-900 mb-4">
-                  ⚠️ Bid Conflicts ({propertyConflicts.length})
+                  ⚠️ offer Conflicts ({propertyConflicts.length})
                 </h3>
                 <p className="text-red-800 text-sm mb-4">
-                  Multiple of your clients are bidding on the same properties. Coordinate strategies to avoid conflicts.
+                  Multiple of your clients are offering on the same properties. Coordinate strategies to avoid conflicts.
                 </p>
 
                 <div className="space-y-3">
@@ -356,7 +356,7 @@ export default function BuyerAgentAdvancedDashboard() {
                     >
                       <h4 className="font-bold text-gray-900">{prop.address}</h4>
                       <p className="text-sm text-gray-600">
-                        {prop.buyerCount} of your clients bidding • Highest: ${prop.highestOffer.toLocaleString()}
+                        {prop.buyerCount} of your clients offering • Highest: ${prop.highestOffer.toLocaleString()}
                       </p>
                       <p className="text-xs text-gray-500 mt-2">
                         Clients involved:{' '}
@@ -448,7 +448,7 @@ export default function BuyerAgentAdvancedDashboard() {
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-sm text-gray-600">Active Bids</p>
+                    <p className="text-sm text-gray-600">Active Offers</p>
                     <p className="text-3xl font-bold text-blue-600">
                       {stats.activeOffers}
                     </p>

@@ -174,7 +174,7 @@ export default function PropertyDetailPage() {
               {/* Offer Details Section */}
               {property.status === 'active' && (
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-gray-900 mb-4">Current Bidding</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">Current offering</h3>
                   <p className="text-gray-600 mb-2">
                     <strong>Current Highest Offer:</strong>
                   </p>
@@ -285,7 +285,7 @@ export default function PropertyDetailPage() {
                     </button>
 
                     <p className="text-xs text-gray-500 text-center">
-                      📱 You'll be notified when outbid
+                      📱 You'll be notified when someone offers more
                     </p>
                   </form>
                 )}
@@ -294,7 +294,7 @@ export default function PropertyDetailPage() {
 
             {property.status !== 'active' && (
               <div className="bg-gray-100 rounded-lg p-6 text-center">
-                <p className="text-gray-600 font-semibold">⚫ Bidding Closed</p>
+                <p className="text-gray-600 font-semibold">⚫ offering Closed</p>
                 <p className="text-sm text-gray-500 mt-2">Check your offers in My Offers</p>
                 <Link
                   href="/buyer/offers"

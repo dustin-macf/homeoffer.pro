@@ -1,0 +1,198 @@
+LETTER OF AUTHORIZATION
+
+TO WHOM IT MAY CONCERN:
+
+This Letter of Authorization ("LOA") is submitted to Twilio Inc. to authorize the use of telephone services and messaging capabilities for California Probate & Trust.
+
+---
+
+COMPANY INFORMATION:
+
+Company Name: California Probate & Trust
+Principal Contact: Dustin MacFarlane
+Email: Dustin@cpt.law
+Phone Number: 916-604-9494
+Address: California, USA
+Business Type: Law Firm (Probate & Trust Administration)
+
+---
+
+AUTHORIZED USE:
+
+California Probate & Trust hereby authorizes Twilio Inc. to:
+
+1. Provide SMS (Short Message Service) messaging services for transactional notifications
+2. Deliver text messages related to account activity, approvals, offers, and marketplace updates
+3. Send appointment confirmations, password resets, and service notifications
+4. Deliver informational messages regarding California Probate & Trust services
+5. Provide voice capabilities for customer support and notifications (if applicable)
+
+---
+
+TELEPHONE NUMBERS:
+
+The following telephone number(s) have been authorized for use with Twilio services:
+
+Primary Number: +1 (916) 604-9494
+
+All traffic on this number(s) is authorized and originates from California Probate & Trust's legitimate business operations.
+
+---
+
+COMPLIANCE STATEMENT:
+
+California Probate & Trust certifies that:
+
+1. The company has explicit consent from all message recipients to send SMS notifications
+2. All recipients have opted-in through documented consent mechanisms
+3. All messages comply with TCPA (Telephone Consumer Protection Act) requirements
+4. The company maintains records of consumer opt-in consent
+5. The company respects consumer opt-out requests and promptly processes STOP commands
+6. All messaging content is truthful and not deceptive
+7. Messages include proper identification of the sender and opt-out instructions
+8. The company has a documented privacy policy available to consumers
+9. The company will not use the service for spam, fraud, or illegal activity
+10. All traffic complies with applicable federal and state laws
+
+---
+
+TRADEMARK & BRANDING:
+
+California Probate & Trust ("the Company") grants Twilio permission to display the company name and logo in the following contexts only:
+
+1. Identification of the message sender to recipients
+2. Twilio's internal business records
+3. Twilio's compliance documentation
+
+The Company's name and branding may NOT be used for:
+- Marketing purposes without written consent
+- Third-party promotions
+- Misleading caller identification
+- Any purpose outside of legitimate SMS/voice service delivery
+
+---
+
+AUTHORIZED SIGNATORY:
+
+I certify that I have the authority to sign this Letter of Authorization on behalf of California Probate & Trust and that all statements herein are true and accurate.
+
+Name: Dustin MacFarlane
+Title: Owner/Attorney
+Company: California Probate & Trust
+Email: Dustin@cpt.law
+Phone: 916-604-9494
+
+Signature: _________________________________ (Print and sign)
+
+Date: ________________
+
+---
+
+EFFECTIVE DATE:
+
+This Letter of Authorization is effective as of the date signed and remains in effect until revoked in writing by California Probate & Trust.
+
+To revoke this authorization, send written notice to: Twilio Compliance
+Email: compliance@twilio.com
+Reference: California Probate & Trust Account
+
+---
+
+ACKNOWLEDGMENT:
+
+California Probate & Trust acknowledges:
+
+1. Receipt of Twilio's Master Service Agreement and Service Terms
+2. Understanding of Twilio's Acceptable Use Policy
+3. Commitment to compliance with all applicable laws
+4. Understanding that violation of this LOA may result in service termination
+5. Responsibility for all traffic originating from authorized phone number(s)
+
+---
+
+CONTACT INFORMATION FOR QUESTIONS:
+
+If Twilio has questions regarding this LOA, please contact:
+
+Primary Contact: Dustin MacFarlane
+Email: Dustin@cpt.law
+Phone: 916-604-9494
+
+Secondary Contact: support@cpt.law
+Website: https://cpt.law
+
+---
+
+LEGAL COMPLIANCE STATEMENT:
+
+This Letter of Authorization certifies that California Probate & Trust operates in compliance with:
+
+- Telephone Consumer Protection Act (TCPA)
+- Truth in Caller ID Act
+- CAN-SPAM Act
+- GDPR (General Data Protection Regulation)
+- CCPA (California Consumer Privacy Act)
+- All applicable state and federal telecommunications laws
+
+---
+
+REPRESENTATIONS & WARRANTIES:
+
+California Probate & Trust represents and warrants that:
+
+1. It has the right to use the phone number(s) listed herein
+2. It has obtained all necessary consents from message recipients
+3. It will maintain accurate records of consumer opt-in/opt-out requests
+4. It will promptly honor all consumer preference requests
+5. It will not use services for harassment, spam, or illegal purposes
+6. All information provided is true, accurate, and complete
+7. It will indemnify Twilio from claims arising from unauthorized use
+
+---
+
+TERMINATION:
+
+This authorization may be terminated at any time by either party upon 30 days written notice. California Probate & Trust may revoke this LOA by submitting written notice to Twilio.
+
+---
+
+Executed this _______ day of _____________, 20_____.
+
+CALIFORNIA PROBATE & TRUST
+
+By: _________________________________
+     Dustin MacFarlane, Owner/Attorney
+
+Signature: _________________________________
+
+Date: _________________________________
+
+Witness (Optional):
+
+Print Name: _________________________________
+Signature: _________________________________
+Date: _________________________________
+
+---
+
+NOTARIZATION (Optional but Recommended):
+
+STATE OF CALIFORNIA
+COUNTY OF _________________
+
+On this _______ day of _____________, 20_____, before me, the undersigned, a Notary Public in and for the State of California, personally appeared:
+
+DUSTIN MACFARLANE
+
+known to me to be the person whose name is subscribed to the within instrument, and acknowledged that he/she executed the same.
+
+IN WITNESS WHEREOF, I have hereunto set my hand and affixed my official seal the date in this certificate first above written.
+
+_________________________________
+Notary Public Signature
+
+_________________________________
+Notary Public Printed Name
+
+Notary Public Serial Number: _____________
+Commission Expires: _____________________

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { getCurrentUser } from '@/lib/auth'
+import { getCurrentUser, signOut } from '@/lib/auth'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 
@@ -11,6 +11,7 @@ export default function Navbar() {
   const [user, setUser] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
 
   useEffect(() => {
     loadUser()
@@ -27,13 +28,23 @@ export default function Navbar() {
     }
   }
 
+  async function handleSignOut() {
+    try {
+      await signOut()
+      setUser(null)
+      setDropdownOpen(false)
+      setMenuOpen(false)
+      router.refresh()
+      router.push('/')
+    } catch (err) {
+      console.error('Sign out error:', err)
+    }
+  }
+
   // Navigation links based on user type
   const getNavLinks = () => {
     if (!user) {
-      return [
-        { label: 'Home', href: '/' },
-        { label: 'Browse', href: '/properties' },
-      ]
+      return [{ label: 'Home', href: '/' }]
     }
 
     if (user.user_type === 'buyer') {
@@ -49,7 +60,6 @@ export default function Navbar() {
       return [
         { label: 'Dashboard', href: '/agent/dashboard' },
         { label: 'Clients', href: '/agent/dashboard-advanced' },
-        { label: 'My Listings', href: '/agent/dashboard' },
         { label: 'Profile', href: '/agent/profile' },
       ]
     }
@@ -104,41 +114,43 @@ export default function Navbar() {
               <div className="w-8 h-8 animate-pulse bg-gray-300 rounded-lg" />
             ) : user ? (
               <>
-                {/* User Menu */}
-                <div className="relative group">
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold text-sm transition">
+                {/* User Menu - Desktop */}
+                <div className="hidden md:block relative">
+                  <button
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-100 hover:bg-indigo-200 text-indigo-900 font-semibold text-sm transition"
+                  >
                     <div className="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
                       {user.first_name?.charAt(0) || '?'}
                     </div>
-                    <span className="hidden sm:inline">{user.first_name || 'User'}</span>
-                    <span className="text-gray-600">▼</span>
+                    <span>{user.first_name || 'User'}</span>
+                    <span className="text-indigo-600">▼</span>
                   </button>
 
                   {/* Dropdown Menu */}
-                  <div className="absolute right-0 mt-0 w-48 bg-white rounded-lg shadow-xl invisible group-hover:visible transition-all">
-                    <Link
-                      href="/settings"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg font-semibold text-sm"
-                    >
-                      ⚙️ Settings
-                    </Link>
-                    <a
-                      href="/privacy"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100 font-semibold text-sm"
-                    >
-                      🔒 Privacy
-                    </a>
-                    <button
-                      onClick={async () => {
-                        const { signOut } = await import('@/lib/auth')
-                        await signOut()
-                        router.push('/')
-                      }}
-                      className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 rounded-b-lg font-semibold text-sm"
-                    >
-                      🚪 Sign Out
-                    </button>
-                  </div>
+                  {dropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-2xl z-50">
+                      <Link
+                        href="/settings"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg font-semibold text-sm"
+                        onClick={() => setDropdownOpen(false)}
+                      >
+                        ⚙️ Settings
+                      </Link>
+                      <a
+                        href="/privacy"
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 font-semibold text-sm"
+                      >
+                        🔒 Privacy
+                      </a>
+                      <button
+                        onClick={handleSignOut}
+                        className="w-full text-left px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-b-lg font-semibold text-sm transition"
+                      >
+                        🚪 Sign Out
+                      </button>
+                    </div>
+                  )}
                 </div>
               </>
             ) : (
@@ -181,6 +193,14 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            {user && (
+              <button
+                onClick={handleSignOut}
+                className="w-full text-left px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-lg font-semibold text-sm transition mt-2"
+              >
+                🚪 Sign Out
+              </button>
+            )}
           </div>
         )}
       </div>

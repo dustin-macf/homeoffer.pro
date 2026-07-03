@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     try {
       await signIn(formData.email, formData.password)
-      router.push('/properties')
+      router.push('/select-role')
     } catch (err: any) {
       setError(err.message || 'Failed to sign in. Please check your credentials.')
     } finally {

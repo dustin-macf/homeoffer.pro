@@ -88,18 +88,18 @@ export default function Navbar() {
   const dashboardLink = getDashboardLink()
 
   return (
-    <nav className="bg-white shadow sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex h-[72px] items-center justify-between">
           {/* Logo - always clickable to go home/dashboard */}
           <Link 
             href={dashboardLink}
-            className="flex items-center gap-2 font-bold text-xl text-indigo-600 hover:text-indigo-700 transition"
+            className="flex items-center gap-3 text-xl font-black tracking-[-0.04em] text-[#153b2e] transition hover:opacity-75"
           >
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">
-              🏠
+            <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#173e30] text-sm font-bold text-[#d5ff62]">
+              HO
             </div>
-            <span className="hidden sm:inline">Home Offer</span>
+            <span className="hidden sm:inline">HomeOffer<span className="text-[#78991e]">.pro</span></span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -145,13 +145,13 @@ export default function Navbar() {
               <>
                 <Link
                   href="/login"
-                  className="px-4 py-2 text-indigo-600 hover:text-indigo-700 font-semibold text-sm"
+                  className="px-4 py-2 text-[#173e30] hover:text-[#78991e] font-semibold text-sm"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/signup"
-                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold text-sm transition"
+                  className="rounded-full bg-[#173e30] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#265744]"
                 >
                   Sign Up
                 </Link>

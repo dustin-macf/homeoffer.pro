@@ -1,276 +1,131 @@
-'use client'
-
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 
+const listings = [
+  { city: 'Granite Bay, CA', beds: 5, baths: 4, sqft: '4,218', offer: '$612,500', time: '2d 08h', tone: 'from-slate-900/10 to-slate-950/80' },
+  { city: 'Rocklin, CA', beds: 4, baths: 3, sqft: '2,729', offer: '$438,000', time: '6d 14h', tone: 'from-blue-900/10 to-slate-950/85' },
+  { city: 'Folsom, CA', beds: 3, baths: 3, sqft: '2,184', offer: '$526,500', time: '9d 03h', tone: 'from-amber-900/10 to-slate-950/85' },
+]
+
 export default function HomePage() {
   return (
-    <>
+    <main className="min-h-screen bg-[#f7f8f5] text-[#13231d]">
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50">
-        {/* Hero */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Real Estate Offers Made Simple
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                Submit offers on homes. List properties. Manage negotiations. All in one transparent marketplace. No hidden offers. No surprises.
-              </p>
 
-              <Link
-                href="/signup"
-                className="inline-block px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold text-lg transition transform hover:scale-105"
-              >
-                Create a Free Account →
+      <section className="relative isolate min-h-[690px] overflow-hidden bg-[#10241d]">
+        <img src="/homeoffer-hero.webp" alt="Modern California home at sunset" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07150f]/95 via-[#0a1812]/75 to-[#0a1812]/10" />
+        <div className="relative mx-auto flex min-h-[690px] max-w-7xl items-center px-6 py-24 lg:px-8">
+          <div className="max-w-2xl text-white">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] backdrop-blur">
+              <span className="h-2 w-2 rounded-full bg-[#d5ff62]" /> California&apos;s transparent home marketplace
+            </div>
+            <h1 className="text-5xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-7xl">
+              The smarter way to make a home offer.
+            </h1>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-white/78 sm:text-xl">
+              Real homes. Visible competition. A focused 13-day offer window that gives buyers confidence and sellers momentum.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Link href="/signup" className="rounded-full bg-[#d5ff62] px-7 py-4 text-center text-base font-bold text-[#10241d] transition hover:bg-white">
+                Create free account
               </Link>
-
-              <p className="text-sm text-gray-500 mt-6">
-                ✓ Buy properties with confidence<br/>
-                ✓ Sell listings to serious buyers<br/>
-                ✓ Connect with verified agents
-              </p>
+              <Link href="/login" className="rounded-full border border-white/35 bg-white/10 px-7 py-4 text-center text-base font-bold text-white backdrop-blur transition hover:bg-white hover:text-[#10241d]">
+                Sign in to browse homes
+              </Link>
             </div>
-
-            {/* Right side visual */}
-            <div className="hidden md:block">
-              <div className="bg-gradient-to-br from-indigo-600 to-blue-600 rounded-2xl p-8 text-white shadow-2xl">
-                <div className="space-y-8">
-                  <div className="flex items-start gap-4">
-                    <div className="text-4xl">🏠</div>
-                    <div>
-                      <h3 className="font-bold text-lg mb-1">For Buyers</h3>
-                      <p className="text-indigo-100 text-sm">Find homes. Submit competitive offers. Track every step. Get notified instantly when offers change.</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="text-4xl">📋</div>
-                    <div>
-                      <h3 className="font-bold text-lg mb-1">For Sellers</h3>
-                      <p className="text-indigo-100 text-sm">List properties. See all offers transparently. Send counter-offers. Negotiate directly with buyers.</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="text-4xl">🤝</div>
-                    <div>
-                      <h3 className="font-bold text-lg mb-1">For Agents</h3>
-                      <p className="text-indigo-100 text-sm">Represent buyers & sellers. Close deals faster. Manage everything from one dashboard.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium text-white/75">
+              <span>13-day offer window</span><span>$500 increments</span><span>Verified agents</span>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* How It Works */}
-        <section className="bg-white py-20 border-t border-gray-200">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-bold text-gray-900 text-center mb-16">
-              Here's How It Works
-            </h2>
+      <section className="border-b border-[#dfe4de] bg-white">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-[#e5e9e4] px-6 py-8 md:grid-cols-4 lg:px-8">
+          {[
+            ['13 days', 'Focused offer period'],
+            ['$500', 'Offer increments'],
+            ['Live', 'Offer activity'],
+            ['DRE', 'Agent verification'],
+          ].map(([big, small]) => (
+            <div key={big} className="px-4 text-center first:pl-0 last:pr-0">
+              <p className="text-2xl font-bold tracking-tight text-[#173e30]">{big}</p>
+              <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#6d7d75]">{small}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Buyer Flow */}
-              <div className="bg-blue-50 rounded-xl p-8 border-2 border-blue-200">
-                <h3 className="text-2xl font-bold text-blue-900 mb-6">🏠 If You're Buying</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="font-bold text-blue-900">1. Create Your Account</p>
-                    <p className="text-sm text-blue-800">Sign up in seconds. Link a buyer's agent (optional).</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-blue-900">2. Browse Properties</p>
-                    <p className="text-sm text-blue-800">See active listings with countdown timers.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-blue-900">3. Make an Offer</p>
-                    <p className="text-sm text-blue-800">Submit your offer in $500 increments.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-blue-900">4. Track Activity</p>
-                    <p className="text-sm text-blue-800">See the highest offer. Get SMS/email updates.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-blue-900">5. Negotiate</p>
-                    <p className="text-sm text-blue-800">Receive counter-offers. Make final decision.</p>
-                  </div>
+      <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#4d725f]">Live marketplace</p>
+            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">Homes open for offers</h2>
+          </div>
+          <Link href="/login" className="font-bold text-[#173e30] underline decoration-[#9bc132] decoration-2 underline-offset-8">View all properties</Link>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          {listings.map((home, index) => (
+            <article key={home.city} className="group overflow-hidden rounded-[28px] border border-[#dfe5df] bg-white shadow-[0_18px_60px_rgba(15,35,27,0.08)]">
+              <div className="relative h-64 overflow-hidden">
+                <img src="/homeoffer-hero.webp" alt={`${home.city} property`} className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${index === 1 ? 'object-[70%_center]' : index === 2 ? 'object-left' : ''}`} />
+                <div className={`absolute inset-0 bg-gradient-to-t ${home.tone}`} />
+                <div className="absolute left-5 top-5 rounded-full bg-[#d5ff62] px-3 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#173e30]">Accepting offers</div>
+                <div className="absolute bottom-5 left-5 text-white">
+                  <p className="text-xs font-bold uppercase tracking-widest text-white/70">Time remaining</p>
+                  <p className="mt-1 text-2xl font-bold">{home.time}</p>
                 </div>
               </div>
-
-              {/* Seller Flow */}
-              <div className="bg-green-50 rounded-xl p-8 border-2 border-green-200">
-                <h3 className="text-2xl font-bold text-green-900 mb-6">📋 If You're Selling</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="font-bold text-green-900">1. Create Your Account</p>
-                    <p className="text-sm text-green-800">Sign up in seconds.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-green-900">2. List Your Property</p>
-                    <p className="text-sm text-green-800">Add address, photos, details. Set a 13-day offering period.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-green-900">3. Receive Offers</p>
-                    <p className="text-sm text-green-800">See all offers transparently in real-time.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-green-900">4. Send Counters</p>
-                    <p className="text-sm text-green-800">Counter-offer to negotiate with buyers.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-green-900">5. Accept & Close</p>
-                    <p className="text-sm text-green-800">Accept the best offer and proceed.</p>
-                  </div>
+              <div className="p-6">
+                <h3 className="text-2xl font-bold tracking-tight">{home.city}</h3>
+                <p className="mt-2 text-sm text-[#687870]">{home.beds} beds · {home.baths} baths · {home.sqft} sq ft</p>
+                <div className="mt-6 flex items-end justify-between border-t border-[#e5e9e4] pt-5">
+                  <div><p className="text-xs font-bold uppercase tracking-wider text-[#829087]">Current offer</p><p className="mt-1 text-xl font-bold">{home.offer}</p></div>
+                  <Link href="/login" className="grid h-11 w-11 place-items-center rounded-full bg-[#173e30] text-xl text-white transition group-hover:bg-[#d5ff62] group-hover:text-[#173e30]">→</Link>
                 </div>
               </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-              {/* Agent Flow */}
-              <div className="bg-purple-50 rounded-xl p-8 border-2 border-purple-200">
-                <h3 className="text-2xl font-bold text-purple-900 mb-6">🤝 If You're an Agent</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="font-bold text-purple-900">1. Create Your Account</p>
-                    <p className="text-sm text-purple-800">Sign up and verify your California DRE license.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-purple-900">2. Represent Buyers</p>
-                    <p className="text-sm text-purple-800">Buyers link you in their profile.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-purple-900">3. Manage Clients</p>
-                    <p className="text-sm text-purple-800">See all offers from your buyer clients in one place.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-purple-900">4. Detect Conflicts</p>
-                    <p className="text-sm text-purple-800">Know if clients are bidding on same property.</p>
-                  </div>
-                  <div>
-                    <p className="font-bold text-purple-900">5. Close Faster</p>
-                    <p className="text-sm text-purple-800">Coordinate negotiations and close deals.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <section className="bg-[#10241d] px-6 py-24 text-white lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-2xl">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#d5ff62]">Built for every side of the deal</p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">Clearer offers. Better decisions.</h2>
           </div>
-        </section>
-
-        {/* Why Home Offer */}
-        <section className="bg-gray-50 py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-bold text-gray-900 text-center mb-12">
-              Why Home Offer?
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: '🎯',
-                  title: 'Transparent Offers',
-                  desc: 'See the highest offer amount. No hidden offers. Fair competition.',
-                },
-                {
-                  icon: '⚡',
-                  title: 'Fast & Easy',
-                  desc: 'Submit offers in minutes. Negotiations in real-time. Close faster.',
-                },
-                {
-                  icon: '🔒',
-                  title: 'Secure & Legal',
-                  desc: 'California DRE compliant. Verified agents only. All transactions protected.',
-                },
-                {
-                  icon: '📱',
-                  title: 'Mobile First',
-                  desc: 'Browse, offer, and negotiate from your phone.',
-                },
-                {
-                  icon: '🤝',
-                  title: 'Verified Agents',
-                  desc: 'Find agents by California DRE license. Know who you are working with.',
-                },
-                {
-                  icon: '💰',
-                  title: 'No Hidden Fees',
-                  desc: 'Transparent pricing. See costs upfront.',
-                },
-              ].map((item, idx) => (
-                <div key={idx} className="bg-white rounded-lg p-6 hover:shadow-lg transition">
-                  <div className="text-4xl mb-3">{item.icon}</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
-                </div>
-              ))}
-            </div>
+          <div className="mt-14 grid gap-px overflow-hidden rounded-[28px] bg-white/15 md:grid-cols-3">
+            {[
+              ['01', 'Buyers', 'Browse active homes, follow the countdown, and submit offers in simple $500 increments.'],
+              ['02', 'Sellers', 'Create urgency, see real offer activity, and keep control of the final decision.'],
+              ['03', 'Agents', 'Manage clients, verify readiness, and guide every offer from one clean dashboard.'],
+            ].map(([num, title, copy]) => (
+              <div key={title} className="bg-[#163126] p-8 sm:p-10">
+                <p className="text-sm font-bold text-[#d5ff62]">{num}</p>
+                <h3 className="mt-12 text-2xl font-bold">{title}</h3>
+                <p className="mt-4 leading-7 text-white/65">{copy}</p>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA */}
-        <section className="bg-indigo-600 text-white py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl font-bold mb-6">Ready to Make Your Move?</h2>
-            <p className="text-xl text-indigo-100 mb-8">
-              Join buyers, sellers, and agents on California's most transparent real estate marketplace.
-            </p>
+      <section className="px-6 py-24 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 rounded-[32px] bg-[#d5ff62] px-8 py-14 text-center md:flex-row md:px-14 md:text-left">
+          <div><p className="text-sm font-bold uppercase tracking-[0.18em] text-[#466016]">Ready when you are</p><h2 className="mt-3 text-4xl font-semibold tracking-[-0.035em] text-[#10241d]">Make your next move with clarity.</h2></div>
+          <Link href="/signup" className="shrink-0 rounded-full bg-[#10241d] px-7 py-4 font-bold text-white transition hover:scale-105">Get started free</Link>
+        </div>
+      </section>
 
-            <Link
-              href="/signup"
-              className="inline-block px-8 py-4 bg-white text-indigo-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105"
-            >
-              Create a Free Account
-            </Link>
-
-            <p className="text-indigo-200 text-sm mt-6">
-              Already have an account? <Link href="/login" className="underline hover:text-white">Sign in</Link>
-            </p>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-              <div>
-                <h3 className="font-bold text-white mb-4">Product</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><Link href="/login" className="hover:text-white transition">Sign In</Link></li>
-                  <li><Link href="/signup" className="hover:text-white transition">Create Account</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-white mb-4">Legal</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><Link href="/privacy" className="hover:text-white transition">Privacy Policy</Link></li>
-                  <li><Link href="/terms" className="hover:text-white transition">Terms of Service</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-white mb-4">Information</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><Link href="/sms-policy" className="hover:text-white transition">SMS Policy</Link></li>
-                  <li><Link href="/data-deletion" className="hover:text-white transition">Delete My Data</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-white mb-4">About</h3>
-                <p className="text-sm">
-                  Transparent real estate marketplace. California DRE compliant. Supporting buyers, sellers, and agents.
-                </p>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
-              <p>© 2026 Home Offer Pro. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
-      </div>
-    </>
+      <footer className="border-t border-[#dfe4de] bg-white px-6 py-10 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 text-sm text-[#66766e] sm:flex-row">
+          <p>© 2026 HomeOffer.pro</p>
+          <div className="flex gap-6"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/sms-policy">SMS policy</Link></div>
+        </div>
+      </footer>
+    </main>
   )
 }

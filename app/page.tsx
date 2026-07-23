@@ -239,7 +239,25 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t border-slate-200 bg-slate-950 px-5 py-10 text-slate-400 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 text-sm sm:flex-row"><p>© 2026 <span className="font-bold text-white">HomeOffer<span className="text-blue-400">.pro</span></span></p><div className="flex gap-6"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/sms-policy">SMS policy</Link></div></div>
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 text-sm sm:flex-row sm:items-center">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="inline-flex rounded-xl bg-white px-3 py-2 transition hover:opacity-90"
+              aria-label="HomeOffer.pro home"
+            >
+              <Image
+                src="/homeoffer-logo-15.png"
+                alt="HomeOffer.pro"
+                width={1908}
+                height={824}
+                className="h-9 w-auto"
+              />
+            </Link>
+            <p>© 2026</p>
+          </div>
+          <div className="flex gap-6"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/sms-policy">SMS policy</Link></div>
+        </div>
       </footer>
     </main>
   )

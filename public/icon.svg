@@ -1,51 +1,7 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="1024" height="1024" fill="url(#gradient)"/>
-  
-  <!-- Gradient Definition -->
-  <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  
-  <!-- House Shape -->
-  <g>
-    <!-- Roof -->
-    <polygon points="512,200 350,450 674,450" fill="white" opacity="0.95"/>
-    
-    <!-- House Body -->
-    <rect x="350" y="450" width="324" height="280" fill="white" opacity="0.95" rx="20"/>
-    
-    <!-- Door -->
-    <rect x="460" y="520" width="104" height="160" fill="#4f46e5" rx="8"/>
-    <circle cx="554" cy="600" r="8" fill="white"/>
-    
-    <!-- Left Window -->
-    <rect x="380" y="480" width="60" height="60" fill="#4f46e5" rx="8"/>
-    <line x1="410" y1="480" x2="410" y2="540" stroke="white" stroke-width="3"/>
-    <line x1="380" y1="510" x2="440" y2="510" stroke="white" stroke-width="3"/>
-    
-    <!-- Right Window -->
-    <rect x="584" y="480" width="60" height="60" fill="#4f46e5" rx="8"/>
-    <line x1="614" y1="480" x2="614" y2="540" stroke="white" stroke-width="3"/>
-    <line x1="584" y1="510" x2="644" y2="510" stroke="white" stroke-width="3"/>
-  </g>
-  
-  <!-- Upward Arrow (representing offers going up) -->
-  <g>
-    <!-- Arrow Shaft -->
-    <rect x="680" y="520" width="40" height="160" fill="white" opacity="0.95" rx="8"/>
-    
-    <!-- Arrow Head -->
-    <polygon points="700,480 660,540 740,540" fill="white" opacity="0.95"/>
-    
-    <!-- $ Symbol inside arrow -->
-    <text x="700" y="625" font-size="48" font-weight="bold" fill="#4f46e5" text-anchor="middle" font-family="Arial">$</text>
-  </g>
-  
-  <!-- "Home Offer" Text -->
-  <text x="512" y="800" font-size="56" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial">Home Offer</text>
-  <text x="512" y="860" font-size="28" fill="white" opacity="0.8" text-anchor="middle" font-family="Arial">Transparent Offers</text>
+  <rect width="1024" height="1024" rx="220" fill="white"/>
+  <path d="M352 432V288L512 144L672 288V432" stroke="#0B1220" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M576 296C563 269 539 256 507 256C467 256 440 275 440 304C440 376 584 336 584 416C584 453 552 480 504 480C467 480 437 464 419 435M507 208V528" stroke="#0B5CFF" stroke-width="56" stroke-linecap="round"/>
+  <path d="M104 616L336 536C370 525 406 528 437 546L496 579H616C656 579 688 611 688 651C688 691 656 723 616 723H464" stroke="#0B1220" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M112 624L240 864L336 816L544 864C582 872 622 864 656 843L912 680C944 659 954 618 934 586C914 552 870 541 837 560L688 643" stroke="#0B1220" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

@@ -95,10 +95,17 @@ export default function Navbar() {
           {/* Logo - always clickable to go home/dashboard */}
           <Link 
             href={dashboardLink}
-            className="flex shrink-0 items-center gap-2 transition hover:opacity-75"
+            className="flex shrink-0 items-center transition hover:opacity-75"
+            aria-label="HomeOffer.pro home"
           >
-            <Image src="/homeoffer-logo.svg" alt="" width={44} height={52} className="h-10 w-[34px]" priority />
-            <span className="text-xl font-black tracking-[-0.045em] text-[#0b1220]">HomeOffer<span className="text-blue-600">.pro</span></span>
+            <Image
+              src="/homeoffer-logo-15.png"
+              alt="HomeOffer.pro"
+              width={1908}
+              height={824}
+              className="h-[46px] w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

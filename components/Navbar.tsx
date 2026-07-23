@@ -88,18 +88,18 @@ export default function Navbar() {
   const dashboardLink = getDashboardLink()
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-blue-100 bg-white/95 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-[72px] items-center justify-between">
           {/* Logo - always clickable to go home/dashboard */}
           <Link 
             href={dashboardLink}
-            className="flex items-center gap-3 text-xl font-black tracking-[-0.04em] text-[#153b2e] transition hover:opacity-75"
+            className="flex items-center gap-3 text-xl font-black tracking-[-0.04em] text-blue-700 transition hover:opacity-75"
           >
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#173e30] text-sm font-bold text-[#d5ff62]">
+            <div className="grid h-9 w-9 place-items-center rounded-xl bg-blue-600 text-sm font-bold text-white">
               HO
             </div>
-            <span className="hidden sm:inline">HomeOffer<span className="text-[#78991e]">.pro</span></span>
+            <span className="hidden sm:inline">HomeOffer<span className="text-blue-400">.pro</span></span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -145,15 +145,9 @@ export default function Navbar() {
               <>
                 <Link
                   href="/login"
-                  className="px-4 py-2 text-[#173e30] hover:text-[#78991e] font-semibold text-sm"
+                  className="rounded-xl bg-blue-600 px-6 py-3 text-base font-black text-white transition hover:bg-blue-700"
                 >
                   Sign In
-                </Link>
-                <Link
-                  href="/signup"
-                  className="rounded-full bg-[#173e30] px-5 py-2.5 text-sm font-bold text-white transition hover:bg-[#265744]"
-                >
-                  Sign Up
                 </Link>
               </>
             )}

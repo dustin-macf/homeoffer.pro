@@ -13,7 +13,7 @@ export async function createProperty(data: {
   listing_agent_id: string
   offer_period_days?: number
 }) {
-  const offerPeriodDays = data.offer_period_days || 13
+  const offerPeriodDays = data.offer_period_days || 11
   const offerEndDate = new Date()
   offerEndDate.setDate(offerEndDate.getDate() + offerPeriodDays)
 
@@ -56,7 +56,7 @@ export async function getActiveProperties() {
     .from('properties')
     .select('*')
     .eq('status', 'active')
-    .order('created_at', { ascending: false })
+    .order('offer_end_date', { ascending: true })
 
   if (error) throw error
   return data

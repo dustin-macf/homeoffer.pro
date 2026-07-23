@@ -113,6 +113,110 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section id="agent-partners" className="scroll-mt-20 border-y border-slate-200 bg-[#f6f8fb] px-5 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <div>
+              <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-blue-700">
+                Built for agents
+              </span>
+              <h2 className="mt-5 text-4xl font-black tracking-[-0.04em] text-slate-950 sm:text-5xl">
+                Grow your business.<br />
+                <span className="text-blue-600">Grow your network.</span>
+              </h2>
+              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">
+                Join HomeOffer for just $7 a month, bring listings to a more transparent marketplace and earn partner rewards when agents in your network close real transactions.
+              </p>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link href="/signup" className="rounded-full bg-blue-600 px-6 py-3 font-black text-white transition hover:bg-blue-700">
+                  Join for $7/month
+                </Link>
+                <Link href="/#agent-program-details" className="rounded-full border border-slate-300 bg-white px-6 py-3 font-black text-slate-900 transition hover:border-blue-300 hover:text-blue-700">
+                  See how rewards work
+                </Link>
+              </div>
+
+              <div className="mt-8 grid max-w-lg grid-cols-3 gap-3">
+                {[
+                  ['$7', 'per month'],
+                  ['2', 'reward levels'],
+                  ['$0', 'for recruiting alone'],
+                ].map(([value, label]) => (
+                  <div key={label} className="rounded-xl border border-slate-200 bg-white p-4">
+                    <p className="text-2xl font-black text-slate-950">{value}</p>
+                    <p className="mt-1 text-xs font-bold leading-4 text-slate-500">{label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div id="agent-program-details" className="scroll-mt-28 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
+              <div className="border-b border-slate-200 px-6 py-5 sm:px-8">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">Agent Partner Program</p>
+                    <h3 className="mt-1 text-2xl font-black text-slate-950">Two levels. One simple goal.</h3>
+                  </div>
+                  <span className="rounded-full bg-slate-950 px-3 py-1.5 text-xs font-black text-white">Rewards after closing</span>
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8">
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <div className="rounded-2xl bg-slate-950 p-5 text-white">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-sm font-black">You</div>
+                    <p className="mt-5 text-sm font-bold text-slate-400">Your role</p>
+                    <p className="mt-1 text-lg font-black">Build with HomeOffer</p>
+                  </div>
+
+                  <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5">
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-sm font-black text-white">1</div>
+                      <span className="text-2xl font-black text-blue-700">$250</span>
+                    </div>
+                    <p className="mt-5 text-sm font-bold text-blue-700">Direct partner</p>
+                    <p className="mt-1 text-sm leading-5 text-slate-600">An agent you introduced closes a HomeOffer transaction.</p>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-200 text-sm font-black text-slate-700">2</div>
+                      <span className="text-2xl font-black text-slate-950">$75</span>
+                    </div>
+                    <p className="mt-5 text-sm font-bold text-slate-800">Extended network</p>
+                    <p className="mt-1 text-sm leading-5 text-slate-600">Their direct partner closes a HomeOffer transaction.</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 rounded-2xl border border-slate-200 p-5">
+                  <p className="font-black text-slate-950">How a reward becomes eligible</p>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                    {[
+                      ['01', 'An agent joins', 'They activate a $7 monthly agent membership.'],
+                      ['02', 'A home is sold', 'A legitimate HomeOffer transaction successfully closes.'],
+                      ['03', 'Rewards are released', 'Eligible partner rewards are paid from HomeOffer revenue.'],
+                    ].map(([number, title, copy]) => (
+                      <div key={number} className="flex gap-3">
+                        <span className="font-black text-blue-600">{number}</span>
+                        <div>
+                          <p className="text-sm font-black text-slate-900">{title}</p>
+                          <p className="mt-1 text-xs leading-5 text-slate-500">{copy}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <p className="mt-5 text-xs leading-5 text-slate-500">
+                  No reward is paid for recruiting or subscription activity alone. Program eligibility, amounts and payment timing are subject to licensing, brokerage approval, transaction requirements and final program terms.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="faq" className="scroll-mt-24 border-t border-slate-200 bg-[#f6f8fb] px-5 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-600">Questions answered</p>

@@ -92,7 +92,7 @@ export default function HomePage() {
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="/signup" className="rounded-full bg-blue-600 px-6 py-3 font-black text-white transition hover:bg-blue-700">
+                <Link href="/signup?role=agent" className="rounded-full bg-blue-600 px-6 py-3 font-black text-white transition hover:bg-blue-700">
                   Join for $7/month
                 </Link>
                 <Link href="/#agent-program-details" className="rounded-full border border-slate-300 bg-white px-6 py-3 font-black text-slate-900 transition hover:border-blue-300 hover:text-blue-700">

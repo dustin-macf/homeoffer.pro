@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { signUp, signInWithOAuth } from '@/lib/auth'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -18,6 +18,20 @@ export default function SignupPage() {
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [agentSignup, setAgentSignup] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const referralCode = params.get('ref')
+    const isAgentSignup = params.get('role') === 'agent' || Boolean(referralCode)
+    setAgentSignup(isAgentSignup)
+    if (isAgentSignup) {
+      window.localStorage.setItem('homeoffer_signup_role', 'agent')
+    }
+    if (referralCode) {
+      window.localStorage.setItem('homeoffer_sponsor_code', referralCode.toUpperCase())
+    }
+  }, [])
 
   async function handleSignup(e: React.FormEvent) {
     e.preventDefault()
@@ -36,11 +50,24 @@ export default function SignupPage() {
       await signUp(formData.email, formData.password, {
         first_name: formData.first_name,
         last_name: formData.last_name,
-        user_type: 'buyer',
+        user_type: agentSignup ? 'agent' : 'buyer',
         sms_opt_in: smsOptIn,
       })
 
-      router.push('/select-role')
+      if (agentSignup) {
+        const sponsorCode = window.localStorage.getItem('homeoffer_sponsor_code')
+        if (sponsorCode) {
+          const { supabase } = await import('@/lib/supabase')
+          const { error: sponsorError } = await supabase.rpc('claim_agent_sponsor', {
+            sponsor_code: sponsorCode,
+          })
+          if (!sponsorError) window.localStorage.removeItem('homeoffer_sponsor_code')
+        }
+        window.localStorage.removeItem('homeoffer_signup_role')
+        router.push('/agent/profile')
+      } else {
+        router.push('/select-role')
+      }
     } catch (err: any) {
       setError(err.message)
     } finally {
@@ -65,7 +92,14 @@ export default function SignupPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4 sm:p-6">
       <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8 w-full max-w-md">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">Home Offer</h1>
-        <p className="text-gray-600 mb-6">Create your account</p>
+        <p className="text-gray-600 mb-6">
+          {agentSignup ? 'Create your agent account' : 'Create your account'}
+        </p>
+        {agentSignup && (
+          <div className="mb-5 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-900">
+            Agent membership is $7 per month. Add your license details after creating your account, then complete secure billing through Stripe.
+          </div>
+        )}
 
         {/* OAuth Buttons */}
         <div className="space-y-3 mb-6">

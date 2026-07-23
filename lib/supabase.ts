@@ -42,6 +42,8 @@ export interface User {
   agent_license?: string
   agent_state?: string
   approved: boolean
+  referral_code?: string
+  referred_by_agent_id?: string
   created_at: string
 }
 

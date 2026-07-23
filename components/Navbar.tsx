@@ -90,6 +90,7 @@ export default function Navbar() {
     if (user.user_type === 'agent') {
       return [
         { label: 'Dashboard', href: '/agent/dashboard' },
+        { label: 'Network', href: '/agent/network' },
         { label: 'Clients', href: '/agent/dashboard-advanced' },
         { label: 'Profile', href: '/agent/profile' },
         { label: 'Settings', href: '/settings' },

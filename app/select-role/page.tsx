@@ -28,6 +28,27 @@ export default function SelectRolePage() {
       router.push('/login')
       return
     }
+
+    const intendedRole = window.localStorage.getItem('homeoffer_signup_role')
+    if (intendedRole === 'agent' && currentUser.user_type !== 'agent') {
+      const { error: roleError } = await supabase
+        .from('users')
+        .update({ user_type: 'agent' })
+        .eq('id', currentUser.id)
+
+      if (!roleError) {
+        const sponsorCode = window.localStorage.getItem('homeoffer_sponsor_code')
+        if (sponsorCode) {
+          const { error: sponsorError } = await supabase.rpc('claim_agent_sponsor', {
+            sponsor_code: sponsorCode,
+          })
+          if (!sponsorError) window.localStorage.removeItem('homeoffer_sponsor_code')
+        }
+        window.localStorage.removeItem('homeoffer_signup_role')
+        router.push('/agent/profile')
+        return
+      }
+    }
     
     // If user already has a role, send them to their dashboard
     if (currentUser.user_type) {
@@ -97,6 +118,18 @@ export default function SelectRolePage() {
         .eq('id', user.id)
 
       if (error) throw error
+
+      if (selectedRole === 'agent') {
+        const sponsorCode = window.localStorage.getItem('homeoffer_sponsor_code')
+        if (sponsorCode) {
+          const { error: sponsorError } = await supabase.rpc('claim_agent_sponsor', {
+            sponsor_code: sponsorCode,
+          })
+          if (!sponsorError) {
+            window.localStorage.removeItem('homeoffer_sponsor_code')
+          }
+        }
+      }
 
       // Redirect to appropriate dashboard
       if (selectedRole === 'buyer') {

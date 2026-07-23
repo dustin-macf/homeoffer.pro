@@ -107,6 +107,12 @@ export default function AgentDashboard() {
             </div>
             <div className="space-x-4">
               <Link
+                href="/agent/network"
+                className="text-indigo-700 hover:text-indigo-900 font-semibold"
+              >
+                Production & Network
+              </Link>
+              <Link
                 href="/seller"
                 className="text-gray-600 hover:text-gray-900 font-semibold"
               >

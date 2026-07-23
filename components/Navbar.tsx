@@ -25,6 +25,11 @@ export default function Navbar() {
         return
       }
 
+      if (pathname === '/how-it-works') {
+        setActiveMarketingTab('how-it-works')
+        return
+      }
+
       if (pathname === '/') {
         setActiveMarketingTab(window.location.hash.slice(1) || 'homes')
       }
@@ -107,7 +112,7 @@ export default function Navbar() {
   const dashboardLink = getDashboardLink()
   const marketingLinks = [
     { key: 'homes', label: 'Homes', href: '/' },
-    { key: 'how-it-works', label: 'How It Works', href: '/#how-it-works' },
+    { key: 'how-it-works', label: 'How It Works', href: '/how-it-works' },
     { key: 'list-property', label: 'List a Property', href: '/seller/create-listing' },
     { key: 'agent-partners', label: 'Grow Your Network', href: '/#agent-partners' },
     { key: 'faq', label: 'FAQ', href: '/#faq' },
@@ -125,7 +130,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[76px] items-center justify-between gap-5">
+        <div className="flex h-[92px] items-center justify-between gap-5">
           {/* Logo - always clickable to go home/dashboard */}
           <Link 
             href={dashboardLink}
@@ -133,11 +138,11 @@ export default function Navbar() {
             aria-label="HomeOffer.pro home"
           >
             <Image
-              src="/homeoffer-logo-15.png"
+              src="/homeoffer-logo-15-tight.png"
               alt="HomeOffer.pro"
-              width={1908}
-              height={824}
-              className="h-[58px] w-auto"
+              width={1549}
+              height={358}
+              className="h-[72px] w-auto"
               priority
             />
           </Link>

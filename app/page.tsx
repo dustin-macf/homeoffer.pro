@@ -18,40 +18,10 @@ export default function HomePage() {
     <main className="min-h-screen bg-white text-[#0b1220]">
       <Navbar />
 
-      <section id="how-it-works" className="scroll-mt-24 border-b border-blue-100 bg-gradient-to-br from-blue-50 via-white to-slate-50 px-5 py-10 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
-            <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">Simple by design</p>
-              <h1 className="mt-2 text-3xl font-black tracking-[-0.035em] text-slate-950 sm:text-4xl">
-                How <span className="text-blue-600">HomeOffer.pro</span> works
-              </h1>
-              <p className="mt-3 max-w-lg leading-7 text-slate-600">
-                Browse openly, understand the full price and submit a clear offer when you&apos;re ready.
-              </p>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-3">
-              {[
-                ['01', 'Browse homes', 'See the leading offer, total price and time remaining.'],
-                ['02', 'Get approved', 'Review the property, financing and representation details.'],
-                ['03', 'Make an offer', 'Submit in clear $500 increments during the 11-day window.'],
-              ].map(([number, title, copy]) => (
-                <div key={number} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-xs font-black text-white">{number}</span>
-                  <h2 className="mt-4 text-lg font-black text-slate-950">{title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{copy}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="homes" className="scroll-mt-24 mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8">
         <div className="mb-6 flex flex-col gap-4 border-b border-slate-200 pb-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-2xl font-black tracking-[-0.035em] text-slate-950">Live <span className="text-blue-600">listings</span></h2>
+            <h1 className="text-2xl font-black tracking-[-0.035em] text-slate-950">Live <span className="text-blue-600">listings</span></h1>
             <div className="mt-4 flex flex-wrap gap-2">
             <button className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-black text-white">Ending soon</button>
             <button className="rounded-full px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-100">Newly listed</button>

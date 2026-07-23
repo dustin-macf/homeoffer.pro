@@ -91,20 +91,20 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[68px] items-center justify-between gap-6">
+        <div className="flex h-[60px] items-center justify-between gap-5">
           {/* Logo - always clickable to go home/dashboard */}
           <Link 
             href={dashboardLink}
-            className="shrink-0 transition hover:opacity-75"
+            className="flex shrink-0 items-center gap-2 transition hover:opacity-75"
           >
-            <Image src="/homeoffer-logo.svg" alt="HomeOffer.pro" width={180} height={52} className="h-11 w-auto" priority />
+            <Image src="/homeoffer-logo.svg" alt="" width={44} height={52} className="h-10 w-[34px]" priority />
+            <span className="text-xl font-black tracking-[-0.045em] text-[#0b1220]">HomeOffer<span className="text-blue-600">.pro</span></span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden flex-1 items-center gap-1 lg:flex">
             <Link href="/" className="rounded-lg px-3 py-2 text-sm font-extrabold text-blue-600">Homes</Link>
-            <Link href="/#buyers" className="rounded-lg px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">Buyers</Link>
-            <Link href="/#sellers" className="rounded-lg px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">Sellers</Link>
+            <Link href="/#buy-and-sell" className="rounded-lg px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">Buy &amp; Sell</Link>
             <Link href="/#how-it-works" className="rounded-lg px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">How It Works</Link>
             <Link href="/#submit-an-offer" className="rounded-lg px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">Submit an Offer</Link>
             <Link href="/#faq" className="rounded-lg px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">FAQ</Link>
@@ -170,8 +170,7 @@ export default function Navbar() {
         {menuOpen && (
           <div className="space-y-2 border-t border-gray-200 pb-4 pt-4 lg:hidden">
             <Link href="/" className="block rounded-lg px-4 py-2 font-bold text-blue-600" onClick={() => setMenuOpen(false)}>Homes</Link>
-            <Link href="/#buyers" className="block rounded-lg px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100" onClick={() => setMenuOpen(false)}>Buyers</Link>
-            <Link href="/#sellers" className="block rounded-lg px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100" onClick={() => setMenuOpen(false)}>Sellers</Link>
+            <Link href="/#buy-and-sell" className="block rounded-lg px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100" onClick={() => setMenuOpen(false)}>Buy &amp; Sell</Link>
             <Link href="/#how-it-works" className="block rounded-lg px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100" onClick={() => setMenuOpen(false)}>How It Works</Link>
             <Link href="/#submit-an-offer" className="block rounded-lg px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100" onClick={() => setMenuOpen(false)}>Submit an Offer</Link>
             <Link href="/#faq" className="block rounded-lg px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100" onClick={() => setMenuOpen(false)}>FAQ</Link>

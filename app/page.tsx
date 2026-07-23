@@ -18,25 +18,20 @@ export default function HomePage() {
     <main className="min-h-screen bg-white text-[#0b1220]">
       <Navbar />
 
-      <section className="border-b border-slate-200 bg-[#f6f8fb]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-7 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+      <section className="mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8">
+        <div className="mb-6 flex flex-col gap-4 border-b border-slate-200 pb-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-600">Open marketplace</p>
-            <h1 className="mt-1 text-3xl font-black tracking-[-0.04em] sm:text-4xl">Active <span className="text-blue-600">homes</span></h1>
-            <p className="mt-2 text-sm font-medium text-slate-600">Browse freely. Properties ending soon appear first.</p>
-          </div>
-          <Link href="/properties" className="w-fit rounded-full bg-[#0b1220] px-6 py-3 text-sm font-black text-white transition hover:bg-blue-600">Browse all homes</Link>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 py-7 sm:px-6 lg:px-8">
-        <div className="mb-6 flex flex-col gap-4 border-b border-slate-200 pb-4 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-wrap gap-2">
+            <h1 className="text-2xl font-black tracking-[-0.035em] text-slate-950">Homes ending <span className="text-blue-600">soon</span></h1>
+            <div className="mt-4 flex flex-wrap gap-2">
             <button className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-black text-white">Ending soon</button>
             <button className="rounded-full px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-100">Newly listed</button>
             <button className="rounded-full px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-100">Highest offer</button>
+            </div>
           </div>
-          <p className="text-sm font-semibold text-slate-500"><span className="font-black text-slate-950">{listings.length}</span> active properties · 11-day offer periods · $500 increments</p>
+          <div className="flex flex-col items-start gap-2 md:items-end">
+            <p className="text-sm font-semibold text-slate-500"><span className="font-black text-slate-950">{listings.length}</span> active properties · 11 days · $500 increments</p>
+            <Link href="/properties" className="text-sm font-black text-blue-700 hover:text-blue-900">View all properties →</Link>
+          </div>
         </div>
 
         <div className="grid gap-x-5 gap-y-8 md:grid-cols-2 xl:grid-cols-3">
@@ -101,15 +96,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-5 py-16 sm:px-6 lg:px-8">
+      <section id="buy-and-sell" className="scroll-mt-20 px-5 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
-          <div id="buyers" className="scroll-mt-24 rounded-2xl border border-slate-200 p-7">
+          <div className="rounded-2xl border border-slate-200 p-7">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">For buyers</p>
             <h2 className="mt-2 text-2xl font-black">See the competition clearly.</h2>
             <p className="mt-3 leading-7 text-slate-600">Browse without an account, compare total prices and follow the homes you care about. Sign in only when you&apos;re ready to take action.</p>
             <Link id="submit-an-offer" href="/properties" className="mt-6 inline-flex scroll-mt-24 rounded-full bg-blue-600 px-5 py-3 font-black text-white hover:bg-blue-700">Find a home</Link>
           </div>
-          <div id="sellers" className="scroll-mt-24 rounded-2xl border border-slate-200 p-7">
+          <div className="rounded-2xl border border-slate-200 p-7">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">For sellers</p>
             <h2 className="mt-2 text-2xl font-black">Create focused competition.</h2>
             <p className="mt-3 leading-7 text-slate-600">Launch an organized 11-day offer period, keep buyers informed and review every offer in one place.</p>

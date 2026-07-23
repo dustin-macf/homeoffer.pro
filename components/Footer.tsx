@@ -49,6 +49,11 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4">Compliance</h4>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link href="/accessibility" className="text-gray-400 hover:text-white transition">
+                  Accessibility
+                </Link>
+              </li>
+              <li>
                 <Link href="/data-deletion" className="text-gray-400 hover:text-white transition">
                   Data Deletion (GDPR/CCPA)
                 </Link>

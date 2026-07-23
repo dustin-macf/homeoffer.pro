@@ -21,7 +21,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-5 py-6 sm:px-6 lg:px-8">
         <div className="mb-6 flex flex-col gap-4 border-b border-slate-200 pb-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 className="text-2xl font-black tracking-[-0.035em] text-slate-950">Homes ending <span className="text-blue-600">soon</span></h1>
+            <h1 className="text-2xl font-black tracking-[-0.035em] text-slate-950">Live <span className="text-blue-600">listings</span></h1>
             <div className="mt-4 flex flex-wrap gap-2">
             <button className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-black text-white">Ending soon</button>
             <button className="rounded-full px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-100">Newly listed</button>
@@ -40,7 +40,7 @@ export default function HomePage() {
             const total = home.offer + buyerPremium
 
             return (
-              <article key={home.address} className="group overflow-hidden border-b border-slate-200 bg-white pb-6">
+              <article key={home.address} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-slate-950/10">
                 <div className="relative h-56 overflow-hidden rounded-xl bg-slate-200">
                   <Image src="/homeoffer-hero.webp" alt={`${home.address}, ${home.city}`} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" className={`object-cover transition duration-500 group-hover:scale-[1.03] ${home.crop}`} />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/85 to-transparent px-5 pb-5 pt-14 text-white">

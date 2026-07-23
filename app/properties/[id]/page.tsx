@@ -52,6 +52,10 @@ export default function PropertyDetailPage() {
 
   const highestOffer = offers?.[0]
   const userOffer = offers?.find((o: any) => o.buyer_id === user?.id)
+  const currentOfferAmount = highestOffer?.amount || property?.starting_offer || 0
+  const platformFee = currentOfferAmount * 0.005
+  const buyerAgentCommission = currentOfferAmount * 0.025
+  const estimatedTotal = currentOfferAmount + platformFee + buyerAgentCommission
 
   async function handleSubmitOffer(e: React.FormEvent) {
     e.preventDefault()
@@ -178,9 +182,15 @@ export default function PropertyDetailPage() {
                   <p className="text-gray-600 mb-2">
                     <strong>Current Highest Offer:</strong>
                   </p>
-                  <p className="text-3xl font-bold text-indigo-600 mb-4">
+                  <p className="text-3xl font-bold text-blue-700 mb-4">
                     ${highestOffer?.amount.toLocaleString() || property.starting_offer.toLocaleString()}
                   </p>
+
+                  <div className="mb-5 space-y-2 rounded-lg border border-blue-200 bg-white p-4 text-sm">
+                    <div className="flex justify-between"><span className="text-gray-600">Platform fee (0.5%)</span><strong>${platformFee.toLocaleString()}</strong></div>
+                    <div className="flex justify-between"><span className="text-gray-600">Buyer&apos;s agent commission (2.5%)</span><strong>${buyerAgentCommission.toLocaleString()}</strong></div>
+                    <div className="flex justify-between border-t border-blue-100 pt-2 text-base"><strong>Estimated total</strong><strong className="text-blue-700">${estimatedTotal.toLocaleString()}</strong></div>
+                  </div>
 
                   {userOffer && (
                     <div className="bg-green-50 border border-green-200 rounded p-3 mb-4">

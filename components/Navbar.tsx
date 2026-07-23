@@ -115,7 +115,7 @@ export default function Navbar() {
 
   const marketingLinkClass = (key: string, mobile = false) => {
     const isActive = activeMarketingTab === key
-    return `${mobile ? 'block' : ''} rounded-lg px-3 py-2 text-sm font-extrabold transition ${
+    return `${mobile ? 'block' : ''} rounded-lg px-4 py-3 text-base font-extrabold transition ${
       isActive
         ? 'bg-blue-50 text-blue-700'
         : 'text-slate-950 hover:bg-slate-100 hover:text-blue-700'
@@ -125,7 +125,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-[60px] items-center justify-between gap-5">
+        <div className="flex h-[76px] items-center justify-between gap-5">
           {/* Logo - always clickable to go home/dashboard */}
           <Link 
             href={dashboardLink}
@@ -137,7 +137,7 @@ export default function Navbar() {
               alt="HomeOffer.pro"
               width={1908}
               height={824}
-              className="h-[46px] w-auto"
+              className="h-[58px] w-auto"
               priority
             />
           </Link>
@@ -159,7 +159,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-lg font-semibold text-sm transition ${
+                className={`px-4 py-3 rounded-lg font-semibold text-base transition ${
                   pathname === link.href
                     ? 'bg-blue-600 text-white'
                     : 'text-slate-700 hover:bg-slate-100'
@@ -196,7 +196,7 @@ export default function Navbar() {
               <>
                 <Link
                   href="/login"
-                  className="rounded-full bg-blue-600 px-6 py-2.5 text-base font-black text-white transition hover:bg-blue-700"
+                  className="rounded-full bg-blue-600 px-7 py-3 text-lg font-black text-white transition hover:bg-blue-700"
                 >
                   Sign In
                 </Link>

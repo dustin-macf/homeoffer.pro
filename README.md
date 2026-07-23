@@ -6,7 +6,7 @@ A transparent, real estate offer marketplace built with Next.js and Supabase.
 
 - **Property Listings**: Sellers post homes with starting offer prices
 - **Real-time Offers**: Buyers submit offers in $500 increments
-- **13-Day Auction Period**: Standard offer period with automatic 15-minute extensions when offers come in within the final 15 minutes
+- **11-Day Offer Period**: Standard offer period with automatic 15-minute extensions when offers come in within the final 15 minutes
 - **Agent Approval Flow**: Listing agents approve buyers before they can submit offers
 - **Live Dashboards**: 
   - Seller dashboard: Manage properties, track offers
@@ -82,7 +82,7 @@ CREATE TABLE properties (
   images TEXT[] DEFAULT ARRAY[]::TEXT[],
   starting_offer INT NOT NULL,
   listing_agent_id UUID NOT NULL REFERENCES users(id),
-  offer_period_days INT DEFAULT 13,
+  offer_period_days INT DEFAULT 11,
   offer_end_date TIMESTAMP NOT NULL,
   status VARCHAR DEFAULT 'active' CHECK (status IN ('active', 'closed', 'sold')),
   created_at TIMESTAMP DEFAULT NOW()
@@ -145,7 +145,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ## How the Auction Works
 
-1. **13-Day Period**: Each property has a 13-day offer period
+1. **11-Day Period**: Each property has an 11-day offer period
 2. **Automatic Extensions**: If an offer comes in within the final 15 minutes, the period extends another 15 minutes
 3. **$500 Increments**: All offers must be multiples of $500
 4. **Highest Wins**: The highest offer wins when the period closes
@@ -191,7 +191,7 @@ homeoffer-pro/
 - ✅ Role-based access (buyer, seller, agent)
 - ✅ Property listing with images
 - ✅ Real-time offer submission
-- ✅ 13-day auction period with auto-extensions
+- ✅ 11-day offer period with auto-extensions
 - ✅ $500 increment validation
 - ✅ Live offer tracking
 - ✅ Agent approval workflow

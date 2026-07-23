@@ -64,6 +64,7 @@ export default function AgentNetworkPage() {
   }, [])
 
   async function loadNetwork() {
+    let authenticatedAgent = false
     try {
       const currentUser = await getCurrentUser()
       if (!currentUser) {
@@ -74,6 +75,7 @@ export default function AgentNetworkPage() {
         router.push('/buyer')
         return
       }
+      authenticatedAgent = true
       setUser(currentUser)
 
       const [membershipResult, propertyResult, rewardResult, tierOneResult] = await Promise.all([
@@ -155,6 +157,10 @@ export default function AgentNetworkPage() {
       setTierTwo(withUnits(secondTier))
     } catch (error) {
       console.error('Agent network error:', error)
+      if (!authenticatedAgent) {
+        router.push('/login')
+        return
+      }
       setMessage('We could not load the agent hub. Please try again.')
     } finally {
       setLoading(false)

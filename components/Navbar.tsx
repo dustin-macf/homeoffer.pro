@@ -161,15 +161,18 @@ export default function Navbar() {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-gray-100 lg:hidden"
+              aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
             >
-              {menuOpen ? '✕' : '☰'}
+              <span aria-hidden="true">{menuOpen ? '✕' : '☰'}</span>
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="space-y-2 border-t border-gray-200 pb-4 pt-4 lg:hidden">
+          <div id="mobile-navigation" className="space-y-2 border-t border-gray-200 pb-4 pt-4 lg:hidden">
             <Link href="/" className="block rounded-lg px-4 py-2 font-bold text-blue-600" onClick={() => setMenuOpen(false)}>Homes</Link>
             <Link href="/#buy-and-sell" className="block rounded-lg px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100" onClick={() => setMenuOpen(false)}>Buy &amp; Sell</Link>
             <Link href="/#how-it-works" className="block rounded-lg px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100" onClick={() => setMenuOpen(false)}>How It Works</Link>
